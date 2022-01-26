@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     const clienteApi = async () => {
       if (apiCall === false) return;
-      let url = `http://ergast.com/api/f1/current/last/results`;
+      let url = `https://ergast.com/api/f1/current/last/results`;
       let resultado = await axios.get(url);
       let dataApi = new XMLParser().parseFromString(resultado.data);
       guardarApiCall(false);
@@ -19,7 +19,7 @@ const Home = () => {
       guardarDate(dataApi.children[0].children[0].children[2].value);
       guardarResultList(dataApi.children[0].children[0].children[4].children);
 
-      url = `http://ergast.com/api/f1/current/driverStandings`;
+      url = `https://ergast.com/api/f1/current/driverStandings`;
       resultado = await axios.get(url);
       dataApi = new XMLParser().parseFromString(resultado.data);
       guardarCurrentStanding((dataApi.children[0].children[0].children).slice(0,5));
