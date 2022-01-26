@@ -75,7 +75,7 @@ const Home = () => {
               </div>
               <hr className="divider-s"></hr>
               <div className="half_height">
-                <p className="title">Clasificación de escuderías aa</p>
+                <p className="title">Clasificación de escuderías</p>
               </div>
             </div>
           </div>
