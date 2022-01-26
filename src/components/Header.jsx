@@ -32,7 +32,7 @@ const Header = () => {
           </NavLink>
           <ul id="nav-mobile" className="right">
             <li>
-              <a href="#!" class="dropdown-trigger" data-target='dropdown-Clasificacion'>Clasificación
+              <a href="#!" className="dropdown-trigger" data-target='dropdown-Clasificacion'>Clasificación
               <i className="material-icons right">arrow_drop_down</i></a>
             </li>
             <li>
