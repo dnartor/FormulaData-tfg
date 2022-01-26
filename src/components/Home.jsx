@@ -3,6 +3,12 @@ import styled from "@emotion/styled";
 import axios from "axios";
 import XMLParser from "react-xml-parser";
 
+const HalfCard= styled.div`
+  margin-bottom: 53px;
+`;
+const Preview= styled.div`
+  min-height:114px;
+`;
 const CardLink = styled.a`
   text-align: right;
   display:block;
@@ -14,6 +20,7 @@ const Home = () => {
   const [date, guardarDate] = useState("");
   const [resultList, guardarResultList] = useState([]);
   const [currentStanding, guardarCurrentStanding] = useState([]);
+  const [currentConstructorStanding, guardarCurrentConstructorStanding] = useState([]);
   useEffect(() => {
     const clienteApi = async () => {
       if (apiCall === false) return;
@@ -29,7 +36,14 @@ const Home = () => {
       resultado = await axios.get(url);
       dataApi = new XMLParser().parseFromString(resultado.data);
       guardarCurrentStanding(
-        dataApi.children[0].children[0].children.slice(0, 5)
+        dataApi.children[0].children[0].children.slice(0, 7)
+      );
+
+      url = `http://ergast.com/api/f1/current/constructorStandings`;
+      resultado = await axios.get(url);
+      dataApi = new XMLParser().parseFromString(resultado.data);
+      guardarCurrentConstructorStanding(
+        dataApi.children[0].children[0].children.slice(0, 7)
       );
     };
     clienteApi();
@@ -41,8 +55,10 @@ const Home = () => {
         <div className="row">
           <div className="col s12 m5 ">
             <div className="card grey lighten-4">
+              <Preview>
               <p className="title">{raceName}</p>
               <p className="subtitle">{date}</p>
+              </Preview>
               <table className="lista_resultados">
                 <tbody>
                   {resultList.map((piloto) => (
@@ -61,8 +77,10 @@ const Home = () => {
           </div>
           <div className="col s12 m5 offset-m2">
             <div className="card grey lighten-4">
-              <div className="half_height">
+              <HalfCard>
+              <Preview>
                 <p className="title">Clasificación de pilotos</p>
+              </Preview>
                 <table className="lista_resultados">
                   <tbody>
                     {currentStanding.map((piloto) => (
@@ -85,11 +103,33 @@ const Home = () => {
                   Ir a clasificación de pilotos
                   <i className="tiny material-icons">arrow_forward</i>
                 </CardLink>
-              </div>
+              </HalfCard>
               <hr className="divider-s"></hr>
-              <div className="half_height">
+              <HalfCard>
+              <Preview>
                 <p className="title">Clasificación de escuderías</p>
-              </div>
+                </Preview>
+                <table className="lista_resultados">
+                  <tbody>
+                    {currentConstructorStanding.map((constructora) => (
+                      <tr
+                        key={constructora.children[0].attributes.constructorId}
+                        className="body_text"
+                      >
+                        <td>
+                          {constructora.children[0].children[0].value}
+                        </td>
+                        <td>{constructora.children[0].children[1].value}</td>
+                        <td>{constructora.attributes.points} PTS</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <CardLink href="/clasificacion-escuderias">
+                  Ir a clasificación de escuderías
+                  <i className="tiny material-icons">arrow_forward</i>
+                </CardLink>
+              </HalfCard>
             </div>
           </div>
         </div>

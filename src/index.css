@@ -63,7 +63,7 @@ code {
   font-family: "Formula1";
 }
 .nav-wrapper a.active {
-  color: #e8175d;
+  color: #e8175d !important;
 }
 
 .nav-wrapper a:hover, #dropdown-Clasificacion.dropdown-content > li a:hover {
@@ -140,9 +140,6 @@ hr.divider-l {
 .lista_resultados tr:first-child::before,
 .lista_resultados tr:first-child td {
   font-weight: bold;
-}
-.half_height{
-  height: 50%;
 }
 main a{
   color:#e8175d !important;
