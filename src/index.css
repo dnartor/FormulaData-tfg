@@ -1,5 +1,27 @@
 @font-face {
   font-family: "Formula1";
+  src: local("Formula1"), url('/src/assets/fonts/Formula1-Regular.ttf') format("ttf");
+}
+@font-face {
+  font-family: "Formula1";
+  font-weight: 900;
+  src: local("Formula1"), url('/src/assets/fonts/Formula1-Bold.ttf') format("ttf");
+}
+
+@font-face {
+  font-family: "Formula1";
+  font-weight: 900;
+  src: local("Formula1"), url('/src/assets/fonts/Formula1-Black.ttf') format("ttf");
+}
+
+@font-face {
+  font-family: "Formula1";
+  font-weight: 900;
+  src: local("Formula1"), url('/src/assets/fonts/Formula1-Wide.ttf') format("ttf");
+}
+/*
+@font-face {
+  font-family: "Formula1";
   font-weight: normal;
   src: url('/src/assets/fonts/Formula1/Formula1-Display-Regular.ttf') format("ttf");
   src: url('/src/assets/fonts/Formula1/Formula1-Display-Regular.woff') format("woff");
@@ -26,12 +48,13 @@
 
 @font-face {
   font-family: "Formula1";
-  font-weight: 900;
+  font-weight: lighter;
   src: url('/src/assets/fonts/Formula1/Formula1-Display-Wide.ttf') format("ttf");
   src: url('/src/assets/fonts/Formula1/Formula1-Display-Wide.woff') format("woff");
   src: url('/src/assets/fonts/Formula1/Formula1-Wide.eot') format("eot");
   src: url('/src/assets/fonts/Formula1/Formula1-Wide.woff2') format("woff2");
 }
+*/
 h1,
 .header {
   font-size: 48px;
