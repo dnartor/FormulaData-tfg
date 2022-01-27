@@ -12,6 +12,7 @@ const Encliclopedia = () => {
     let url = `https://newsapi.org/v2/everything?domains=formula1.com&apiKey=${apiKey}`;
     let resultado = await axios.get(url);
     console.log(resultado);
+    guardarApiCall(false);
     //let dataApi = new XMLParser().parseFromString(resultado.data);
     
   };
