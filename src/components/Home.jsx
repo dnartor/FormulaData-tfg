@@ -39,7 +39,7 @@ const Home = () => {
         dataApi.children[0].children[0].children.slice(0, 7)
       );
 
-      url = `http://ergast.com/api/f1/current/constructorStandings`;
+      url = `https://ergast.com/api/f1/current/constructorStandings`;
       resultado = await axios.get(url);
       dataApi = new XMLParser().parseFromString(resultado.data);
       guardarCurrentConstructorStanding(
