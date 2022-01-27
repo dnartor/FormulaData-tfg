@@ -68,7 +68,7 @@ const Home = () => {
                         {piloto.children[0].children[2].value}
                       </td>
                       <td>{piloto.children[1].children[0].value}</td>
-                      <td>{piloto.children[5].value}</td>
+                      <td>{piloto.children[4].value ==='Finished' ? piloto.children[5].value : piloto.children[4].value}</td>
                     </tr>
                   ))}
                 </tbody>
