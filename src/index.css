@@ -1,23 +1,36 @@
 @font-face {
   font-family: "Formula1";
-  src: url('/src/assets/fonts/Formula1-Regular.ttf') format("ttf");
+  font-weight: normal;
+  src: url('/src/assets/fonts/Formula1/Formula1-Display-Regular.ttf') format("ttf");
+  src: url('/src/assets/fonts/Formula1/Formula1-Display-Regular.woff') format("woff");
+  src: url('/src/assets/fonts/Formula1/Formula1-Regular.eot') format("eot");
+  src: url('/src/assets/fonts/Formula1/Formula1-Regular.woff2') format("woff2");
 }
 @font-face {
   font-family: "Formula1";
-  font-weight: 900;
-  src: url('/src/assets/fonts/Formula1-Bold.ttf') format("ttf");
+  font-weight: bold;
+  src: url('/src/assets/fonts/Formula1/Formula1-Display-Bold.ttf') format("ttf");
+  src: url('/src/assets/fonts/Formula1/Formula1-Display-Bold.woff') format("woff");
+  src: url('/src/assets/fonts/Formula1/Formula1-Bold.eot') format("eot");
+  src: url('/src/assets/fonts/Formula1/Formula1-Bold.woff2') format("woff2");
+}
+
+@font-face {
+  font-family: "Formula1";
+  font-weight: bolder;
+  src: url('/src/assets/fonts/Formula1/Formula1-Display-Black.ttf') format("ttf");
+  src: url('/src/assets/fonts/Formula1/Formula1-Display-Black.woff') format("woff");
+  src: url('/src/assets/fonts/Formula1/Formula1-Black.eot') format("eot");
+  src: url('/src/assets/fonts/Formula1/Formula1-Black.woff2') format("woff2");
 }
 
 @font-face {
   font-family: "Formula1";
   font-weight: 900;
-  src: url('/src/assets/fonts/Formula1-Black.ttf') format("ttf");
-}
-
-@font-face {
-  font-family: "Formula1";
-  font-weight: 900;
-  src: url('/src/assets/fonts/Formula1-Wide.ttf') format("ttf");
+  src: url('/src/assets/fonts/Formula1/Formula1-Display-Wide.ttf') format("ttf");
+  src: url('/src/assets/fonts/Formula1/Formula1-Display-Wide.woff') format("woff");
+  src: url('/src/assets/fonts/Formula1/Formula1-Wide.eot') format("eot");
+  src: url('/src/assets/fonts/Formula1/Formula1-Wide.woff2') format("woff2");
 }
 h1,
 .header {
