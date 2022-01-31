@@ -48,12 +48,16 @@
 h1,
 .header {
   font-size: 48px;
-  font-family: "Formula1";
+  font-family: "Formula1",Raleway;
 }
 h2,
 .title {
   font-size: 38px;
-  font-family: "Formula1";
+  font-family: "Formula1",Raleway;
+}
+.title-s{
+  font-size: 18px;
+  font-family: "Formula1",Raleway;
 }
 .subtitle {
   font-size: 24px;
@@ -64,11 +68,7 @@ h2,
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Raleway,sans-serif;
 }
 
 code {

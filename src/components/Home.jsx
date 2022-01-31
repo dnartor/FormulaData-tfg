@@ -3,15 +3,24 @@ import styled from "@emotion/styled";
 import axios from "axios";
 import XMLParser from "react-xml-parser";
 
-const HalfCard= styled.div`
+import NoticiasHome from "./NoticiasHome.jsx";
+import MiSpinner from "./MiSpinner.jsx";
+
+const HalfCard = styled.div`
   margin-bottom: 53px;
 `;
-const Preview= styled.div`
-  min-height:114px;
+const Preview = styled.div`
+  min-height: 114px;
 `;
 const CardLink = styled.a`
   text-align: right;
-  display:block;
+  display: block;
+`;
+const CenterLoader = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 350px;
+  align-items: center;
 `;
 
 const Home = () => {
@@ -20,7 +29,11 @@ const Home = () => {
   const [date, guardarDate] = useState("");
   const [resultList, guardarResultList] = useState([]);
   const [currentStanding, guardarCurrentStanding] = useState([]);
-  const [currentConstructorStanding, guardarCurrentConstructorStanding] = useState([]);
+  const [currentConstructorStanding, guardarCurrentConstructorStanding] =
+    useState([]);
+  const apiKey = "269ad4947b6a41e498d9960f01643530";
+  const [noticias, guardarNoticias] = useState([]);
+
   useEffect(() => {
     const clienteApi = async () => {
       if (apiCall === false) return;
@@ -45,6 +58,11 @@ const Home = () => {
       guardarCurrentConstructorStanding(
         dataApi.children[0].children[0].children.slice(0, 7)
       );
+      url = `https://newsapi.org/v2/everything?domains=formula1.com&apiKey=${apiKey}`;
+      resultado = await axios.get(url);
+      resultado = resultado.data;
+      console.log(resultado);
+      guardarNoticias(resultado.slice(0, 3));
     };
     clienteApi();
   });
@@ -56,8 +74,8 @@ const Home = () => {
           <div className="col s12 m5 ">
             <div className="card grey lighten-4">
               <Preview>
-              <p className="title">{raceName}</p>
-              <p className="subtitle">{date}</p>
+                <p className="title">{raceName}</p>
+                <p className="subtitle">{date}</p>
               </Preview>
               <table className="lista_resultados">
                 <tbody>
@@ -68,7 +86,11 @@ const Home = () => {
                         {piloto.children[0].children[2].value}
                       </td>
                       <td>{piloto.children[1].children[0].value}</td>
-                      <td>{piloto.children[4].value ==='Finished' ? piloto.children[5].value : piloto.children[4].value}</td>
+                      <td>
+                        {piloto.children[4].value === "Finished"
+                          ? piloto.children[5].value
+                          : piloto.children[4].value}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -78,9 +100,9 @@ const Home = () => {
           <div className="col s12 m5 offset-m2">
             <div className="card grey lighten-4">
               <HalfCard>
-              <Preview>
-                <p className="title">Clasificación de pilotos</p>
-              </Preview>
+                <Preview>
+                  <p className="title">Clasificación de pilotos</p>
+                </Preview>
                 <table className="lista_resultados">
                   <tbody>
                     {currentStanding.map((piloto) => (
@@ -106,8 +128,8 @@ const Home = () => {
               </HalfCard>
               <hr className="divider-s"></hr>
               <HalfCard>
-              <Preview>
-                <p className="title">Clasificación de escuderías</p>
+                <Preview>
+                  <p className="title">Clasificación de escuderías</p>
                 </Preview>
                 <table className="lista_resultados">
                   <tbody>
@@ -116,9 +138,7 @@ const Home = () => {
                         key={constructora.children[0].attributes.constructorId}
                         className="body_text"
                       >
-                        <td>
-                          {constructora.children[0].children[0].value}
-                        </td>
+                        <td>{constructora.children[0].children[0].value}</td>
                         <td>{constructora.children[0].children[1].value}</td>
                         <td>{constructora.attributes.points} PTS</td>
                       </tr>
@@ -135,6 +155,15 @@ const Home = () => {
         </div>
       </div>
       <hr className="divider-l"></hr>
+      <section>
+        {noticias.length > 0 ? (
+          <NoticiasHome noticias={noticias} />
+        ) : (
+          <CenterLoader>
+            <MiSpinner />
+          </CenterLoader>
+        )}
+      </section>
     </div>
   );
 };
