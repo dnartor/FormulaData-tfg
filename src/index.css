@@ -1,24 +1,14 @@
 @font-face {
   font-family: "Formula1";
-  src: local("Formula1"), url('/src/assets/fonts/Formula1-Regular.ttf') format("ttf");
-}
-@font-face {
-  font-family: "Formula1";
-  font-weight: 900;
-  src: local("Formula1"), url('/src/assets/fonts/Formula1-Bold.ttf') format("ttf");
-}
-
-@font-face {
-  font-family: "Formula1";
-  font-weight: 900;
-  src: local("Formula1"), url('/src/assets/fonts/Formula1-Black.ttf') format("ttf");
+  src: url("assets/fonts/Formula1-Regular.eot");
+  src: local("☺"), url("assets/fonts/Formula1-Regular.woff") format("woff"),
+    url("assets/fonts/Formula1-Regular.ttf") format("truetype"),
+    url("assets/fonts/Formula1-Regular.svg") format("svg"),
+	url('assets/fonts/Formula1-Regular.otf') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: "Formula1";
-  font-weight: 900;
-  src: local("Formula1"), url('/src/assets/fonts/Formula1-Wide.ttf') format("ttf");
-}
 /*
 @font-face {
   font-family: "Formula1";
