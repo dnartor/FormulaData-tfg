@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import axios from "axios";
 
 const NoticiasHome = ({ noticias }) => {
   const Link = styled.a`
