@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import axios from "axios";
 import XMLParser from "react-xml-parser";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 import NoticiasHome from "./NoticiasHome.jsx";
 import MiSpinner from "./MiSpinner.jsx";
@@ -15,6 +16,7 @@ const Preview = styled.div`
 const CardLink = styled.a`
   text-align: right;
   display: block;
+  margin-top: 32px;
 `;
 const CenterLoader = styled.div`
   display: flex;
@@ -31,7 +33,7 @@ const Home = () => {
   const [currentStanding, guardarCurrentStanding] = useState([]);
   const [currentConstructorStanding, guardarCurrentConstructorStanding] =
     useState([]);
-  const apiKey = "269ad4947b6a41e498d9960f01643530";
+  const apiKey = "pub_4219973489f9fd3dcf5d2e8be0f5b30fe9d9";
   const [noticias, guardarNoticias] = useState([]);
 
   useEffect(() => {
@@ -58,11 +60,11 @@ const Home = () => {
       guardarCurrentConstructorStanding(
         dataApi.children[0].children[0].children.slice(0, 7)
       );
-      url = `https://newsapi.org/v2/everything?domains=formula1.com&apiKey=${apiKey}`;
+      url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=Formula%201&language=en&category=sports`;
       resultado = await axios.get(url);
-      resultado = resultado.data;
-      console.log(resultado);
+      resultado = resultado.data.results;
       guardarNoticias(resultado.slice(0, 3));
+      //guardarNoticias(resultado);
     };
     clienteApi();
   });
@@ -163,6 +165,85 @@ const Home = () => {
             <MiSpinner />
           </CenterLoader>
         )}
+      </section>
+      <hr className="divider-l"></hr>
+      <section>
+        <div className="row_socialHome_center">
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+        </div>
+        <div className="row_socialHome_center">
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+              />
+          </div>
+        </div>
+        <div className="row_socialHome">
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="MercedesAMGF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+        </div>
       </section>
     </div>
   );

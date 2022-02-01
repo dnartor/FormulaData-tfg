@@ -10,7 +10,9 @@ import Clasificacion from "./components/Clasificacion";
 import Calendario from "./components/Calendario.jsx";
 import Circuitos from "./components/Circuitos.jsx";
 import Enciclopedia from "./components/Enciclopedia.jsx";
-import Noticias from "./components/Noticias.jsx";
+import Noticias from "./components/noticias/Noticias.jsx";
+import Noticia from "./components/noticias/Noticia.jsx";
+import AllNoticias from "./components/noticias/AllNoticias.jsx";
 
 function App() {
   return (
@@ -26,7 +28,10 @@ function App() {
           <Route path="/circuitos" element={<Circuitos />} />
           <Route path="/encliclopedia" element={<Circuitos />} />
           <Route path="/enciclopedia" element={<Enciclopedia />} />
-          <Route path="/noticias" element={<Noticias />} />
+          <Route path="/noticias" element={<Noticias />} >
+            <Route path="" element={<AllNoticias/>} />
+            <Route path=":postSlug" element={<Noticia/>} />
+          </Route>
         </Routes>
       </main>
       <footer></footer>
