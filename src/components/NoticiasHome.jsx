@@ -14,6 +14,14 @@ const NoticiasHome = ({ noticias }) => {
     aspect-ratio: 16/9;
     max-width: 100%;
   `;
+  const LimitDescription = styled.p`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  `;
 
   /*
   const apiKey = "269ad4947b6a41e498d9960f01643530";
@@ -91,7 +99,7 @@ const NoticiasHome = ({ noticias }) => {
             <a className="" href={"/Noticias/" + noticias[1].title}>
               <p className="title-s">{noticias[1].title}</p>
             </a>
-            <p className="body_text-s">{noticias[1].description}</p>
+            <LimitDescription className="body_text-s">{noticias[1].description}</LimitDescription>
           </div>
           <div className="row">
             {noticias[2].image_url === null ? (
@@ -105,7 +113,7 @@ const NoticiasHome = ({ noticias }) => {
             <a className="hiden_link" href={"/Noticias/" + noticias[2].title}>
               <p className="title-s">{noticias[2].title}</p>
             </a>
-            <p className="body_text-s">{noticias[2].description}</p>
+            <LimitDescription className="body_text-s">{noticias[2].description}</LimitDescription>
           </div>
         </div>
         <Link href="/Noticias/">
