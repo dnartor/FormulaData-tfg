@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="mi_container">
         <div className="row">
           <div className="col m4 s12">
-            <h5 className="formula1_text">Trabajo de fin de título</h5>
+            <h5 className="formula1_text center">Trabajo de fin de título</h5>
 
             <p className="grey-text text-lighten-4">
               Este trabajo de fin de título ha sido realizado por Daniel Naranjo
@@ -17,7 +17,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="col m4 s12">
-            <h5 className="formula_text">Sígueme en las redes</h5>
+            <h5 className="formula1_text center">Sígueme en las redes</h5>
             <div className="row marginUD-m">
               <div className="col m3">
                 <a
@@ -64,7 +64,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="col m4 s12">
-            <h5 className="formula1_text">Enlaces de interés</h5>
+            <h5 className="formula1_text center">Enlaces de interés</h5>
             <ul>
               <li>
                 <a href="https://www.ulpgc.es/">
