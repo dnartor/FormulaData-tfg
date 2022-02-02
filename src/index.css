@@ -322,7 +322,7 @@ a > i.material-icons {
     width: 100%;
   }
   .row_socialHome_center >.socialHome,.row_socialHome > .socialHome:not(:last-child){
-    margin: 0 ;
+    margin: 0;
     margin-bottom: 32px;
   }
   .row_socialHome_center, .row_socialHome{
