@@ -152,6 +152,7 @@ code {
   max-width: 1440px;
   padding: 30px;
   margin:0 auto;
+  overflow: hidden;
 }
 
 hr,
@@ -273,6 +274,15 @@ a > i.material-icons {
   nav a.sidenav-trigger {
     display: flex !important;
 }
+.title{
+  font-size: 28px;
+}
+.subtitle{
+  font-size: 20px;
+}
+.brand-logo{
+  left: 0;
+}
   nav,
   nav .nav-wrapper i,
   nav a.sidenav-trigger,
@@ -280,7 +290,42 @@ a > i.material-icons {
     font-size: 60px;
     color:#363636;
   }
-  nav .brand-logo {
-    left: 65px;
+
+}
+
+@media only screen and (max-width: 768px) {
+  .brand-logo{
+    left: 70px !important;
+  }
+  .row_socialHome_center{
+    width: 100%;
+  }
+  .row_socialHome{
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .row_socialHome > .socialHome{
+    width: 27%;
+  }
+  .row_socialHome > .socialHome:last-child{
+    margin:0 auto;
+    margin-top: 32px;
+    justify-self: center;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .header_container .header{
+    font-size: 70px;
+  }
+  .row_socialHome > .socialHome,.row_socialHome_center >.socialHome{
+    width: 100%;
+  }
+  .row_socialHome_center >.socialHome,.row_socialHome > .socialHome:not(:last-child){
+    margin: 0;
+    margin-bottom: 32px;
+  }
+  .row_socialHome_center, .row_socialHome{
+    flex-wrap: wrap;
   }
 }

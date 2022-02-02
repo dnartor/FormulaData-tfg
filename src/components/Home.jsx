@@ -8,10 +8,42 @@ import NoticiasHome from "./NoticiasHome.jsx";
 import MiSpinner from "./MiSpinner.jsx";
 
 const HalfCard = styled.div`
-  margin-bottom: 53px;
+  margin-bottom: 48px;
+
+  @media (max-width: 1024px) {
+    margin-bottom: 79px;
+  }
+  @media (max-width: 768px) {
+    margin-bottom: 52px;
+    & .body_text {
+      font-size: 12px;
+    }
+    & td {
+      text-align: center;
+    }
+    & .title {
+      font-size: 23px;
+    }
+  }
+`;
+const LeftCard = styled.div`
+  @media (max-width: 768px) {
+    & .body_text {
+      font-size: 12px;
+    }
+    & td {
+      text-align: center;
+    }
+  }
 `;
 const Preview = styled.div`
   min-height: 114px;
+  @media (max-width: 1024px) {
+    min-height: 78px;
+  }
+  @media (max-width: 768px) {
+    min-height: 70px;
+  }
 `;
 const CardLink = styled.a`
   text-align: right;
@@ -73,8 +105,8 @@ const Home = () => {
     <div className="mi_container">
       <div className="section">
         <div className="row">
-          <div className="col s12 m5 ">
-            <div className="card grey lighten-4">
+          <div className="col s12 m6">
+            <LeftCard className="card grey lighten-4">
               <Preview>
                 <p className="title">{raceName}</p>
                 <p className="subtitle">{date}</p>
@@ -97,9 +129,9 @@ const Home = () => {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </LeftCard>
           </div>
-          <div className="col s12 m5 offset-m2">
+          <div className="col s12 m6">
             <div className="card grey lighten-4">
               <HalfCard>
                 <Preview>
