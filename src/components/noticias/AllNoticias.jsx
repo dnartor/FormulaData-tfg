@@ -3,7 +3,7 @@ import React from "react";
 const Noticias = () => {
   
   return (
-    <div className="container">
+    <div className="mi_container">
       <h1>Noticias</h1>
     </div>
   );

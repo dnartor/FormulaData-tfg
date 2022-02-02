@@ -70,7 +70,7 @@ const Home = () => {
   });
 
   return (
-    <div className="container">
+    <div className="mi_container">
       <div className="section">
         <div className="row">
           <div className="col s12 m5 ">
@@ -168,28 +168,8 @@ const Home = () => {
       </section>
       <hr className="divider-l"></hr>
       <section>
-        <div className="row_socialHome_center">
-          <div className="socialHome">
-            <TwitterTimelineEmbed
-              sourceType="timeline"
-              screenName="MercedesAMGF1"
-              options={{ height: 350, tweetsLimit: 1 }}
-            />
-          </div>
-          <div className="socialHome">
-            <TwitterTimelineEmbed
-              sourceType="timeline"
-              screenName="MercedesAMGF1"
-              options={{ height: 350, tweetsLimit: 1 }}
-            />
-          </div>
-          <div className="socialHome">
-            <TwitterTimelineEmbed
-              sourceType="timeline"
-              screenName="MercedesAMGF1"
-              options={{ height: 350, tweetsLimit: 1 }}
-            />
-          </div>
+        <div className="header_container">
+          <p className="header">Social</p>
         </div>
         <div className="row_socialHome_center">
           <div className="socialHome">
@@ -202,44 +182,67 @@ const Home = () => {
           <div className="socialHome">
             <TwitterTimelineEmbed
               sourceType="timeline"
-              screenName="MercedesAMGF1"
+              screenName="redbullracing"
               options={{ height: 350, tweetsLimit: 1 }}
             />
           </div>
           <div className="socialHome">
             <TwitterTimelineEmbed
               sourceType="timeline"
-              screenName="MercedesAMGF1"
+              screenName="ScuderiaFerrari"
               options={{ height: 350, tweetsLimit: 1 }}
-              />
+            />
+          </div>
+        </div>
+        <div className="row_socialHome_center">
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="McLarenF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="AlpineF1Team"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
+          </div>
+          <div className="socialHome">
+            <TwitterTimelineEmbed
+              sourceType="timeline"
+              screenName="AlphaTauriF1"
+              options={{ height: 350, tweetsLimit: 1 }}
+            />
           </div>
         </div>
         <div className="row_socialHome">
           <div className="socialHome">
             <TwitterTimelineEmbed
               sourceType="timeline"
-              screenName="MercedesAMGF1"
+              screenName="AstonMartinF1"
               options={{ height: 350, tweetsLimit: 1 }}
             />
           </div>
           <div className="socialHome">
             <TwitterTimelineEmbed
               sourceType="timeline"
-              screenName="MercedesAMGF1"
+              screenName="alfaromeoorlen"
               options={{ height: 350, tweetsLimit: 1 }}
             />
           </div>
           <div className="socialHome">
             <TwitterTimelineEmbed
               sourceType="timeline"
-              screenName="MercedesAMGF1"
+              screenName="WilliamsRacing"
               options={{ height: 350, tweetsLimit: 1 }}
             />
           </div>
           <div className="socialHome">
             <TwitterTimelineEmbed
               sourceType="timeline"
-              screenName="MercedesAMGF1"
+              screenName="HaasF1Team"
               options={{ height: 350, tweetsLimit: 1 }}
             />
           </div>

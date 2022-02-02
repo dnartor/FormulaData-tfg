@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="container">
+    <div className="mi_container">
       <h1> Calendario</h1>
     </div>
   );
