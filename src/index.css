@@ -93,9 +93,7 @@ h2,
 .body_text-s {
   font-size: 14px;
 }
-.hard-pink {
-  color: #e8175d;
-}
+
 body {
   margin: 0;
   font-family: "B612", sans-serif;
@@ -241,9 +239,19 @@ a > i.material-icons {
   width: 27%;
   border: #dddede 1px solid;
 }
-.flex-center {
-  justify-content: center;
+.btn{
+  background-color: #cc527a !important;
 }
+.btn[type=submit]:hover{
+  background-color: #e8175d !important;
+}
+.my-buscador label.active{
+  color:#e8175d !important;
+}
+
+
+
+
 .page-footer {
   background-color: #cc527a;
 }
@@ -268,7 +276,21 @@ a > i.material-icons {
 .marginUD-m {
   margin: 16px 0;
 }
-
+.flex-center {
+  justify-content: center;
+}
+.vertical-align{
+  align-self: center;
+}
+.hard-pink {
+  color: #e8175d !important;
+}
+.hard-pink-bk {
+  background-color: #e8175d !important;
+}
+.soft-pink-bk {
+  background-color: #cc527a !important;
+}
 /*************************************** Medias ********************************/
 
 @media only screen and (max-width: 1024px) {
