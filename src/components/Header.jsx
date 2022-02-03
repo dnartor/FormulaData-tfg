@@ -39,6 +39,21 @@ const Header = () => {
           </NavLink>
         </li>
       </ul>
+      <ul
+        id="dropdown-Clasificacion-movil"
+        className="dropdown-content grey lighten-4 animate__animated animate__slideInDown"
+      >
+        <li>
+          <NavLink to="/clasificacion-pilotos">
+            Clasificación de pilotos
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="clasificacion-escuderias">
+            Clasificación de escuderias
+          </NavLink>
+        </li>
+      </ul>
       <Navegador className="grey lighten-4">
         <div className="nav-wrapper">
           <NavLink to="/" className="brand-logo">
@@ -78,7 +93,7 @@ const Header = () => {
           <a
             href="#!"
             className="dropdown-trigger"
-            data-target="dropdown-Clasificacion"
+            data-target="dropdown-Clasificacion-movil"
           >
             Clasificación
             <i className="material-icons right">arrow_drop_down</i>

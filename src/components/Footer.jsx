@@ -68,24 +68,6 @@ const Footer = () => {
             <ul>
               <li>
                 <a
-                  href="https://www.ulpgc.es/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  ULPGC
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.eii.ulpgc.es/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Escuela de Ingeniería Informática 2
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://es.reactjs.org/"
                   rel="noreferrer"
                   target="_blank"
@@ -100,6 +82,24 @@ const Footer = () => {
                   target="_blank"
                 >
                   Npm
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.ulpgc.es/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  ULPGC
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.eii.ulpgc.es/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Escuela de Ingeniería Informática
                 </a>
               </li>
             </ul>

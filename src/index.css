@@ -60,6 +60,7 @@
   font-size: 80px;
   color: #e8175d;
 }
+
 h1,
 .header {
   font-size: 48px;
@@ -111,12 +112,14 @@ code {
 }
 .nav-wrapper .brand-logo {
   height: 100%;
+  max-width: 20%;
 }
 .nav-wrapper a {
   font-size: 24px;
   color: #363636;
   font-family: "Formula1";
 }
+
 .nav-wrapper a.active {
   color: #e8175d !important;
 }
@@ -129,10 +132,11 @@ code {
 .nav-wrapper > ul {
   height: 100%;
   width: 100%;
+  max-width: 80%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2%;
 }
 .nav-wrapper > ul > li {
@@ -151,7 +155,7 @@ code {
 .mi_container {
   max-width: 1440px;
   padding: 30px;
-  margin:0 auto;
+  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -273,59 +277,79 @@ a > i.material-icons {
   }
   nav a.sidenav-trigger {
     display: flex !important;
-}
-.title{
-  font-size: 28px;
-}
-.subtitle{
-  font-size: 20px;
-}
-.brand-logo{
-  left: 0;
-}
+  }
+  .title {
+    font-size: 28px;
+  }
+  .subtitle {
+    font-size: 20px;
+  }
+  .brand-logo {
+    left: 0;
+  }
   nav,
   nav .nav-wrapper i,
   nav a.sidenav-trigger,
   nav a.sidenav-trigger i {
     font-size: 60px;
-    color:#363636;
+    color: #363636;
   }
-
+  #dropdown-Clasificacion-movil{
+    top:49px !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-  .brand-logo{
+  .brand-logo {
     left: 70px !important;
   }
-  .row_socialHome_center{
+  .row_socialHome_center {
     width: 100%;
   }
-  .row_socialHome{
+  .row_socialHome {
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .row_socialHome > .socialHome{
+  .row_socialHome > .socialHome {
     width: 27%;
   }
-  .row_socialHome > .socialHome:last-child{
-    margin:0 auto;
+  .row_socialHome > .socialHome:last-child {
+    margin: 0 auto;
     margin-top: 32px;
     justify-self: center;
   }
 }
 
 @media only screen and (max-width: 414px) {
-  .header_container .header{
-    font-size: 70px;
-  }
-  .row_socialHome > .socialHome,.row_socialHome_center >.socialHome{
+  
+  .row_socialHome > .socialHome,
+  .row_socialHome_center > .socialHome {
     width: 100%;
   }
-  .row_socialHome_center >.socialHome,.row_socialHome > .socialHome:not(:last-child){
+  .row_socialHome_center > .socialHome,
+  .row_socialHome > .socialHome:not(:last-child) {
     margin: 0;
     margin-bottom: 32px;
   }
-  .row_socialHome_center, .row_socialHome{
+  .row_socialHome_center,
+  .row_socialHome {
     flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 1300px) {
+  .header_container .header {
+    font-size: calc(50px + (80 - 50) * ((100vw - 300px) / (1300 - 300)));
+  }
+  .body_text{
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1300 - 300)));
+  }
+  .header{
+    font-size: calc(18px + (48 - 18) * ((100vw - 300px) / (1300 - 300)));
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1300px) {
+  .nav-wrapper a {
+    font-size: calc(18px + (24 - 18) * ((100vw - 1025px) / (1300 - 1025)));
   }
 }
