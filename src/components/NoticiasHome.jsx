@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { NavLink } from "react-router-dom";
 
 import noImagen from "../assets/noImage_notice.jpg";
 
 const NoticiasHome = ({ noticias }) => {
-  const Link = styled.a`
+  const Link = styled.NavLink`
     display: block;
     text-align: center;
     margin-bottom: 32px;
@@ -120,7 +121,7 @@ const NoticiasHome = ({ noticias }) => {
             </LimitDescription>
           </div>
         </div>
-        <Link href="/noticias/">
+        <Link to="/noticias/">
           Ir a noticias<i className="tiny material-icons">arrow_forward</i>
         </Link>
       </div>
