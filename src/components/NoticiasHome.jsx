@@ -99,7 +99,9 @@ const NoticiasHome = ({ noticias }) => {
             <a className="" href={"/Noticias/" + noticias[1].title}>
               <p className="title-s">{noticias[1].title}</p>
             </a>
-            <LimitDescription className="body_text-s">{noticias[1].description}</LimitDescription>
+            <LimitDescription className="body_text-s">
+              {noticias[1].description}
+            </LimitDescription>
           </div>
           <div className="row">
             {noticias[2].image_url === null ? (
@@ -113,7 +115,9 @@ const NoticiasHome = ({ noticias }) => {
             <a className="hiden_link" href={"/Noticias/" + noticias[2].title}>
               <p className="title-s">{noticias[2].title}</p>
             </a>
-            <LimitDescription className="body_text-s">{noticias[2].description}</LimitDescription>
+            <LimitDescription className="body_text-s">
+              {noticias[2].description}
+            </LimitDescription>
           </div>
         </div>
         <Link href="/Noticias/">

@@ -95,10 +95,11 @@ const Home = () => {
       url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=Formula%201&language=en&category=sports`;
       resultado = await axios.get(url);
       resultado = resultado.data.results;
-      guardarNoticias(resultado.slice(0, 3));
+      guardarNoticias(resultado);
       //guardarNoticias(resultado);
     };
     clienteApi();
+    localStorage.setItem("noticias", JSON.stringify(noticias));
   });
 
   return (
