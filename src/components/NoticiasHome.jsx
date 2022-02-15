@@ -72,16 +72,16 @@ const NoticiasHome = ({ noticias }) => {
       <div className="col m12">
         <div className="col m8 s12">
           {noticias[0].image_url === null ? (
-            <a className="hiden_link" href={"/Noticias/" + noticias[0].title}>
+            <a className="hiden_link" href={"/noticias/" + noticias[0].title}>
               <Imagen src={noImagen} alt={noticias[0].title} />
             </a>
           ) : (
-            <a className="hiden_link" href={"/Noticias/" + noticias[0].title}>
+            <a className="hiden_link" href={"/noticias/" + noticias[0].title}>
               <Imagen src={noticias[0].image_url} alt={noticias[0].title} />
             </a>
           )}
           <p className="subtitle date">{noticias[0].pubDate.split(" ")[0]}</p>
-          <a className="hiden_link" href={"/Noticias/" + noticias[0].title}>
+          <a className="hiden_link" href={"/noticias/" + noticias[0].title}>
             <p className="title">{noticias[0].title}</p>
           </a>
           <p className="body_text">{noticias[0].description}</p>
@@ -96,7 +96,7 @@ const NoticiasHome = ({ noticias }) => {
             <p className="subtitle-s date-s">
               {noticias[1].pubDate.split(" ")[0]}
             </p>
-            <a className="" href={"/Noticias/" + noticias[1].title}>
+            <a className="" href={"/noticias/" + noticias[1].title}>
               <p className="title-s">{noticias[1].title}</p>
             </a>
             <LimitDescription className="body_text-s">
@@ -112,7 +112,7 @@ const NoticiasHome = ({ noticias }) => {
             <p className="subtitle-s date-s">
               {noticias[2].pubDate.split(" ")[0]}
             </p>
-            <a className="hiden_link" href={"/Noticias/" + noticias[2].title}>
+            <a className="hiden_link" href={"noticias/" + noticias[2].title}>
               <p className="title-s">{noticias[2].title}</p>
             </a>
             <LimitDescription className="body_text-s">
@@ -120,7 +120,7 @@ const NoticiasHome = ({ noticias }) => {
             </LimitDescription>
           </div>
         </div>
-        <Link href="/Noticias/">
+        <Link href="/noticias/">
           Ir a noticias<i className="tiny material-icons">arrow_forward</i>
         </Link>
       </div>

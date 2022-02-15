@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 
-import Error from "./Error";
+//import Error from "./Error";
 import useBusqueda from "./hooks/useBusqueda";
 
 const Buscador = ({ guardarBusqueda }) => {
