@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import noImagen from "../assets/noImage_notice.jpg";
 
 const NoticiasHome = ({ noticias }) => {
-  const Link = styled.NavLink`
+  const Link = styled.a`
     display: block;
     text-align: center;
     margin-bottom: 32px;
@@ -73,18 +73,18 @@ const NoticiasHome = ({ noticias }) => {
       <div className="col m12">
         <div className="col m8 s12">
           {noticias[0].image_url === null ? (
-            <a className="hiden_link" href={"/noticias/" + noticias[0].title}>
+            <NavLink className="hiden_link" to={"/noticias/" + noticias[0].title}>
               <Imagen src={noImagen} alt={noticias[0].title} />
-            </a>
+            </NavLink>
           ) : (
-            <a className="hiden_link" href={"/noticias/" + noticias[0].title}>
+            <NavLink className="hiden_link" to={"/noticias/" + noticias[0].title}>
               <Imagen src={noticias[0].image_url} alt={noticias[0].title} />
-            </a>
+            </NavLink>
           )}
           <p className="subtitle date">{noticias[0].pubDate.split(" ")[0]}</p>
-          <a className="hiden_link" href={"/noticias/" + noticias[0].title}>
+          <NavLink className="hiden_link" to={"/noticias/" + noticias[0].title}>
             <p className="title">{noticias[0].title}</p>
-          </a>
+          </NavLink>
           <p className="body_text">{noticias[0].description}</p>
         </div>
         <div className="col m4 s12">
@@ -97,9 +97,9 @@ const NoticiasHome = ({ noticias }) => {
             <p className="subtitle-s date-s">
               {noticias[1].pubDate.split(" ")[0]}
             </p>
-            <a className="" href={"/noticias/" + noticias[1].title}>
+            <NavLink className="" to={"/noticias/" + noticias[1].title}>
               <p className="title-s">{noticias[1].title}</p>
-            </a>
+            </NavLink>
             <LimitDescription className="body_text-s">
               {noticias[1].description}
             </LimitDescription>
@@ -113,17 +113,17 @@ const NoticiasHome = ({ noticias }) => {
             <p className="subtitle-s date-s">
               {noticias[2].pubDate.split(" ")[0]}
             </p>
-            <a className="hiden_link" href={"noticias/" + noticias[2].title}>
+            <NavLink className="hiden_link" to={"noticias/" + noticias[2].title}>
               <p className="title-s">{noticias[2].title}</p>
-            </a>
+            </NavLink>
             <LimitDescription className="body_text-s">
               {noticias[2].description}
             </LimitDescription>
           </div>
         </div>
-        <Link to="/noticias/">
+        <NavLink to="/noticias/">
           Ir a noticias<i className="tiny material-icons">arrow_forward</i>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );
