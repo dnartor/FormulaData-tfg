@@ -85,15 +85,15 @@ const Noticia = () => {
                   {noticia.description}
                 </LimitDescription>
               ) : null}
-              <NavLink
+              <a
                 className="right_text marginD-xl"
-                to={noticia.link}
+                href={noticia.link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Ver la noticia completa{" "}
                 <i className="tiny material-icons">whatshot</i>
-              </NavLink>
+              </a>
             </>
           </div>
         </Row>
