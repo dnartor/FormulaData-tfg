@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import styled from "@emotion/styled";
+import { NavLink } from "react-router-dom";
 
 const Noticia = () => {
   const EnlaceLateral = styled.div`
@@ -39,22 +40,22 @@ const Noticia = () => {
               noticeKey = "noticia-" + noticeNumber;
               return (
                 <EnlaceLateral key={noticeKey}>
-                  <a
+                  <NavLink
                     className="hiden_link "
-                    href={"/Noticias/" + element.title}
+                    to={"/Noticias/" + element.title}
                   >
                     <p className="title-s">{element.title}</p>
                     <p className="subtitle-s date">
                       {element.pubDate.split(" ")[0]}
                     </p>
-                  </a>
+                  </NavLink>
                   <hr className="divider-s hard-pink-bk"></hr>
                 </EnlaceLateral>
               );
             })}
-            <a className="right_text marginD-xl" href="/Noticias/">
+            <NavLink className="right_text marginD-xl" to="/Noticias/">
               Ir a noticias <i className="tiny material-icons">arrow_forward</i>
-            </a>
+            </NavLink>
           </div>
           <div className="col m8 s12">
             {noticia.image_url === null ? null : (
@@ -84,15 +85,15 @@ const Noticia = () => {
                   {noticia.description}
                 </LimitDescription>
               ) : null}
-              <a
+              <NavLink
                 className="right_text marginD-xl"
-                href={noticia.link}
+                to={noticia.link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Ver la noticia completa{" "}
                 <i className="tiny material-icons">whatshot</i>
-              </a>
+              </NavLink>
             </>
           </div>
         </Row>
