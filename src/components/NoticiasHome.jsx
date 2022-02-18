@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import noImagen from "../assets/noImage_notice.jpg";
 
 const NoticiasHome = ({ noticias }) => {
-  const Link = styled.a`
+  const Link = styled(NavLink)`
     display: block;
     text-align: center;
     margin-bottom: 32px;
@@ -89,11 +89,15 @@ const NoticiasHome = ({ noticias }) => {
         </div>
         <div className="col m4 s12">
           <div className="row">
-            {noticias[1].image_url === null ? (
+          {noticias[1].image_url === null ? (
+            <NavLink className="hiden_link" to={"/noticias/" + noticias[1].title}>
               <Imagen src={noImagen} alt={noticias[1].title} />
-            ) : (
+            </NavLink>
+          ) : (
+            <NavLink className="hiden_link" to={"/noticias/" + noticias[1].title}>
               <Imagen src={noticias[1].image_url} alt={noticias[1].title} />
-            )}
+            </NavLink>
+          )}
             <p className="subtitle-s date-s">
               {noticias[1].pubDate.split(" ")[0]}
             </p>
@@ -105,11 +109,15 @@ const NoticiasHome = ({ noticias }) => {
             </LimitDescription>
           </div>
           <div className="row">
-            {noticias[2].image_url === null ? (
+          {noticias[2].image_url === null ? (
+            <NavLink className="hiden_link" to={"/noticias/" + noticias[2].title}>
               <Imagen src={noImagen} alt={noticias[2].title} />
-            ) : (
+            </NavLink>
+          ) : (
+            <NavLink className="hiden_link" to={"/noticias/" + noticias[2].title}>
               <Imagen src={noticias[2].image_url} alt={noticias[2].title} />
-            )}
+            </NavLink>
+          )}
             <p className="subtitle-s date-s">
               {noticias[2].pubDate.split(" ")[0]}
             </p>
@@ -121,9 +129,9 @@ const NoticiasHome = ({ noticias }) => {
             </LimitDescription>
           </div>
         </div>
-        <NavLink to="/noticias/">
+        <Link to="/noticias/">
           Ir a noticias<i className="tiny material-icons">arrow_forward</i>
-        </NavLink>
+        </Link>
       </div>
     </div>
   );

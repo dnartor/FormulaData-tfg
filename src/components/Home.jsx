@@ -6,6 +6,7 @@ import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 import NoticiasHome from "./NoticiasHome.jsx";
 import MiSpinner from "./MiSpinner.jsx";
+import { NavLink } from "react-router-dom";
 
 const HalfCard = styled.div`
   margin-bottom: 48px;
@@ -45,7 +46,7 @@ const Preview = styled.div`
     min-height: 70px;
   }
 `;
-const CardLink = styled.a`
+const CardLink = styled(NavLink)`
   text-align: right;
   display: block;
   margin-top: 32px;
@@ -156,7 +157,7 @@ const Home = () => {
                     ))}
                   </tbody>
                 </table>
-                <CardLink href="/clasificacion-pilotos">
+                <CardLink to="/clasificacion-pilotos">
                   Ir a clasificación de pilotos
                   <i className="tiny material-icons">arrow_forward</i>
                 </CardLink>
@@ -180,7 +181,7 @@ const Home = () => {
                     ))}
                   </tbody>
                 </table>
-                <CardLink href="/clasificacion-escuderias">
+                <CardLink to="/clasificacion-escuderias">
                   Ir a clasificación de escuderías
                   <i className="tiny material-icons">arrow_forward</i>
                 </CardLink>
