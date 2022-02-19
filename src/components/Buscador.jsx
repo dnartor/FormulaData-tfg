@@ -19,7 +19,6 @@ const Buscador = ({ guardarBusqueda }) => {
     }
 
     guardarBusqueda(busqueda);
-    console.log("guardo en Buscador:"+busqueda);
   };
   return (
     <div className="row">

@@ -66,8 +66,8 @@ const Noticia = () => {
               />
             )}
             <>
-              <p className="subtitle date">{noticia.pubDate}</p>
-              <h1 className="justify_text hard-pink">{postSlug}</h1>
+              <p className="subtitle date">{noticia.pubDate.split(" ")[0]}</p>
+              <h1 className="justify_text hard-pink header">{postSlug}</h1>
               {noticia.full_description ? (
                 <LimitDescription className="body_text margin-s justify_text">
                   {noticia.full_description}

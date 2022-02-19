@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 
 import Buscador from "../Buscador";
+import NoticiasGrid from "../noticias/NoticiasGrid";
 const Noticias = () => {
   
+  const [busqueda, guardarBusqueda] = useState("todos");
 
- 
-  const [busqueda, guardarBusqueda] = useState("");
-
-
-  
+  const [noticias, guardarNoticia] = useState(JSON.parse(localStorage.getItem("noticias")));
   
   return (
     <div className="mi_container">
@@ -18,6 +16,18 @@ const Noticias = () => {
       <Buscador
       guardarBusqueda={guardarBusqueda}
       />
+      <NoticiasGrid
+        allNoticias={noticias}
+        search={busqueda}
+      ></NoticiasGrid>
+      {busqueda === '' ? (
+        <p>hola</p>
+      )
+      :
+      (
+        <p>Adios</p>
+      )
+    }
     </div>
   );
 };

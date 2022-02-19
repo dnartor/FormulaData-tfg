@@ -6,7 +6,7 @@ const useBusqueda = (label, stateInicial) => {
     const Buscador = () => (
       <Fragment>
         <div className="col m10">
-          <label class='hard-pink'for="form-busqueda">{label}</label>
+          <label className='hard-pink' htmlFor="form-busqueda">{label}</label>
           <input autoFocus='autoFocus' onChange={(e) => actualizarState(e.target.value)} type="search" id="form-busqueda" value={state} />
         </div>
         <div className="col m2 vertical-align">
