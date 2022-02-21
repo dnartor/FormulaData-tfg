@@ -17,7 +17,6 @@ const NoticiasGrid = ({ search }) => {
 
   const [ultimaBusqueda, guardarUltimaBusqueda] = useState("todos");
   const [busqueda, guardarBusqueda] = useState(search);
-  const [busquedaFail, guardarBusquedaFail] = useState(false);
   const [allNoticias, guardarAllNoticias] = useState([]);
   const [noticias, guardarNoticias] = useState([]);
   const [apiCall, guardarApiCall] = useState(true);
@@ -88,15 +87,7 @@ const NoticiasGrid = ({ search }) => {
 
     console.log(currentItems);
 
-  }, [
-    allNoticias,
-    apiCall,
-    busqueda,
-    itemOffset,
-    noticias,
-    search,
-    ultimaBusqueda,
-  ]);
+  }, [allNoticias, apiCall, busqueda, currentItems, itemOffset, noticias, search, ultimaBusqueda]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % noticias.length;
