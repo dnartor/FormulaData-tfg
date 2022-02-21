@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
+import noImagen from "../../assets/noImage_notice.jpg";
 
 const Noticia = () => {
   const EnlaceLateral = styled.div`
@@ -58,7 +59,15 @@ const Noticia = () => {
             </NavLink>
           </div>
           <div className="col m8 s12">
-            {noticia.image_url === null ? null : (
+            {noticia.image_url === null ? (
+              <NavLink className="hiden_link" to={"/noticias/" + noticia.title}>
+                <img
+                  className="img-16-9 center_container"
+                  src={noImagen}
+                  alt={noticia.title}
+                />
+              </NavLink>
+            ) : (
               <img
                 className="img-16-9 center_container"
                 src={noticia.image_url}
