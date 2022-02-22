@@ -29,6 +29,7 @@ const NoticiasGrid = ({ search }) => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const itemsPerPage = 4;
+  
 
   useEffect(() => {
     const clienteApi = async () => {
@@ -45,11 +46,10 @@ const NoticiasGrid = ({ search }) => {
     localStorage.setItem("noticias", JSON.stringify(allNoticias));
 
     const searchLike = (e) => {
+     
       guardarBusqueda(search);
-      console.log("-----------------------------");
-      console.log("a: " + ultimaBusqueda + " d: " + busqueda);
+
       if (busqueda !== ultimaBusqueda && busqueda !== "todos") {
-        console.log("2 a: " + ultimaBusqueda + " d: " + busqueda);
         setItemOffset(0);
 
         let newNoticias = [];
@@ -59,35 +59,36 @@ const NoticiasGrid = ({ search }) => {
         allNoticias.map((noticia) => {
           titleLower = noticia.title.toLowerCase();
           if (titleLower.includes(busquedaLower) === true) {
-            console.log("3 a: " + ultimaBusqueda + " d: " + busqueda);
             newNoticias.push(noticia);
           }
         });
         if (newNoticias <= 0) {
-          console.log("4 a: " + ultimaBusqueda + " d: " + busqueda);
           guardarNoticias(["vacio"]);
         } else {
-          console.log("5 a: " + ultimaBusqueda + " d: " + busqueda);
           guardarNoticias(newNoticias);
         }
       } else if (busqueda === "todos") {
-        console.log("6 a: " + ultimaBusqueda + " d: " + busqueda);
         guardarNoticias(allNoticias);
+        
       }
       guardarUltimaBusqueda(busqueda);
+
     };
     searchLike();
-    console.log("----------------");
-    console.log(noticias);
-    const endOffset = itemOffset + itemsPerPage;
-    console.log(itemOffset+":"+endOffset);
-    setCurrentItems(noticias.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(noticias.length / itemsPerPage));
-    console.log("----------------");
 
-    console.log(currentItems);
+  }, [search,busqueda,ultimaBusqueda]);
 
-  }, [allNoticias, apiCall, busqueda, currentItems, itemOffset, noticias, search, ultimaBusqueda]);
+  useEffect(() => {
+    const paginate = async () => {
+      if (noticias[0] === 'vacio') return;
+      setPageCount(Math.ceil(noticias.length / itemsPerPage));
+      const endOffset = itemOffset + itemsPerPage;
+      setCurrentItems(noticias.slice(itemOffset, endOffset));
+    };
+    paginate();
+    
+    
+  },[itemOffset,noticias]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % noticias.length;
