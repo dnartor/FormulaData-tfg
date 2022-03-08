@@ -8,6 +8,8 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer";
 import Home from "./components/Home.jsx";
 import Clasificacion from "./components/Clasificacion";
+import ClasificacionPilotos from "./components/clasificaciones/ClasificacionPilotos";
+import ClasificacionEscuderias from "./components/clasificaciones/ClasificacionEscuderias";
 import Calendario from "./components/Calendario.jsx";
 import Circuitos from "./components/Circuitos.jsx";
 import Enciclopedia from "./components/Enciclopedia.jsx";
@@ -31,6 +33,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/clasificacion" element={<Clasificacion />} />
+          <Route path="/clasificacion-pilotos" element={<ClasificacionPilotos />} />
+          <Route path="/clasificacion-escuderias" element={<ClasificacionEscuderias />} />
           <Route path="/calendario" element={<Calendario />} />
           <Route path="/circuitos" element={<Circuitos />} />
           <Route path="/encliclopedia" element={<Circuitos />} />

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Home = () => {
+const Clasificacion = () => {
   return (
     <div className="mi_container">
       <h1>Clasificación</h1>
@@ -8,4 +8,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Clasificacion;

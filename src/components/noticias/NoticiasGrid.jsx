@@ -146,11 +146,13 @@ function Items({ currentItems }) {
     line-clamp: 1;
     -webkit-box-orient: vertical;
   `;
+  /*
   const Link = styled(NavLink)`
     display: block;
     text-align: center;
     margin-bottom: 32px;
   `;
+  */
 
   if (currentItems[0] !== "vacio") {
     let noticeNumber = 0;

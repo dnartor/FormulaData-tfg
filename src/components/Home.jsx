@@ -192,7 +192,7 @@ const Home = () => {
       </div>
       <hr className="divider-l"></hr>
       <section>
-        {noticias.length > 0 ? (
+        {Object.keys(noticias).length > 0 ? (
           <NoticiasHome noticias={noticias} />
         ) : (
           <CenterLoader>
