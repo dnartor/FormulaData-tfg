@@ -151,7 +151,6 @@ const Home = () => {
                           {piloto.children[0].children[2].value}
                         </td>
                         <td>{piloto.children[1].children[0].value}</td>
-                        <td>{piloto.children[1].children[0].value}</td>
                         <td>{piloto.attributes.points} PTS</td>
                       </tr>
                     ))}

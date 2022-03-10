@@ -4,7 +4,7 @@ import XMLParser from "react-xml-parser";
 
 import MiSpinner from "../MiSpinner.jsx";
 
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 const CenterLoader = styled.div`
   display: flex;
@@ -15,7 +15,10 @@ const CenterLoader = styled.div`
 
 const ClasificacionPilotos = () => {
   const [apiCall, guardarApiCall] = useState(true);
+  const [apiCallCircuito, guardarApiCallCircuito] = useState(true);
   const [standings, guardarStandings] = useState("");
+  const [circuito, guardarCircuito] = useState('');
+
 
   useEffect(() => {
     const clienteApi = async () => {
@@ -25,9 +28,23 @@ const ClasificacionPilotos = () => {
       let dataApi = new XMLParser().parseFromString(resultado.data);
       guardarApiCall(false);
       guardarStandings(dataApi.children[0].children[0]);
-      console.log(dataApi);
     };
+    const getCircuit = async () => {
+      if (standings === '' || !apiCallCircuito ) return;
+      
+      let year = standings.attributes.season;
+      let round = standings.attributes.round;
+      let url = "https://ergast.com/api/f1/" + year + "/"+ round + "/circuits";
+      let resultado = await axios.get(url);
+      let dataApi = new XMLParser().parseFromString(resultado.data);
+      console.log(dataApi);
+      guardarApiCallCircuito(false);
+      guardarCircuito(dataApi.children[0].children[0]);
+      
+    };
+
     clienteApi();
+    getCircuit();
   });
   return (
     <div className="mi_container">
@@ -36,11 +53,17 @@ const ClasificacionPilotos = () => {
       </div>
       <div className="section">
         <div className="row">
-          <div className="col m12">
-          {Object.keys(standings).length > 0 ? (
-            <><p className="title">{standings.attributes.season}</p><p className="subtitle">
-                Gran Premio: {standings.attributes.round}
-              </p><table className="lista_resultados">
+          {Object.keys(standings).length > 0 && Object.keys(circuito).length > 0 ? (
+          <div className="col s12 m8 offset-m2  card grey lighten-4">
+              <>
+
+                <p className="title center_text">
+                  {circuito.children[0].value} - {circuito.children[1].children[0].value}
+                </p>
+                <p className="subtitle center_text">
+                  {standings.attributes.season}
+                </p>
+                <table className="lista_resultados">
                   <tbody>
                     {standings.children.map((piloto) => (
                       <tr
@@ -52,18 +75,18 @@ const ClasificacionPilotos = () => {
                           {piloto.children[0].children[2].value}
                         </td>
                         <td>{piloto.children[1].children[0].value}</td>
-                        <td>{piloto.children[1].children[0].value}</td>
                         <td>{piloto.attributes.points} PTS</td>
                       </tr>
                     ))}
                   </tbody>
-                </table></>
-          ) : (
-            <CenterLoader>
-            <MiSpinner />
-          </CenterLoader>
-          )}
+                </table>
+              </>
           </div>
+            ) : (
+              <CenterLoader>
+                <MiSpinner />
+              </CenterLoader>
+            )}
         </div>
       </div>
     </div>

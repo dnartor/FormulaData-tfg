@@ -424,7 +424,7 @@ a > i.material-icons {
 
 @media screen and (min-width: 300px) and (max-width: 1300px) {
   .header_container .header {
-    font-size: calc(50px + (80 - 50) * ((100vw - 300px) / (1300 - 300)));
+    font-size: calc(40px + (80 - 40) * ((100vw - 300px) / (1300 - 300)));
   }
   .body_text {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1300 - 300)));
