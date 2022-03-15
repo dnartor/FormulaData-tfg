@@ -100,7 +100,9 @@ const Home = () => {
       //guardarNoticias(resultado);
     };
     clienteApi();
-    localStorage.setItem("noticias", JSON.stringify(noticias));
+    if(Object.keys(noticias).length > 0){
+      localStorage.setItem("noticias", JSON.stringify(noticias));
+    }
   });
 
   return (

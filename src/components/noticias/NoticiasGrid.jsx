@@ -43,7 +43,9 @@ const NoticiasGrid = ({ search }) => {
       //guardarNoticias(resultado);
     };
     clienteApi();
-    localStorage.setItem("noticias", JSON.stringify(allNoticias));
+    if(Object.keys(allNoticias).length > 0){
+      localStorage.setItem("noticias", JSON.stringify(allNoticias));
+    }
 
     const searchLike = (e) => {
      

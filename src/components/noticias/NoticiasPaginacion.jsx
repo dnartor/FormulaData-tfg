@@ -2,30 +2,30 @@ import React from "react";
 
 const NoticasPaginacion = () => {
   return (
-    <ul class="pagination">
-      <li class="disabled">
+    <ul className="pagination">
+      <li className="disabled">
         <a href="#!">
-          <i class="material-icons">chevron_left</i>
+          <i className="material-icons">chevron_left</i>
         </a>
       </li>
-      <li class="active">
+      <li className="active">
         <a href="#!">1</a>
       </li>
-      <li class="waves-effect">
+      <li className="waves-effect">
         <a href="#!">2</a>
       </li>
-      <li class="waves-effect">
+      <li className="waves-effect">
         <a href="#!">3</a>
       </li>
-      <li class="waves-effect">
+      <li className="waves-effect">
         <a href="#!">4</a>
       </li>
-      <li class="waves-effect">
+      <li className="waves-effect">
         <a href="#!">5</a>
       </li>
-      <li class="waves-effect">
+      <li className="waves-effect">
         <a href="#!">
-          <i class="material-icons">chevron_right</i>
+          <i className="material-icons">chevron_right</i>
         </a>
       </li>
     </ul>

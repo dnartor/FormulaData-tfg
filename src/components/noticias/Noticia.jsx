@@ -25,7 +25,7 @@ const Noticia = () => {
   let { postSlug } = useParams();
   let noticeNumber = 0;
   let noticeKey = "";
-  let noticias = JSON.parse(localStorage.getItem("noticias")).slice(0, 6);
+  let noticias = JSON.parse(localStorage.getItem("noticias"));
   const noticia = noticias.find((element) => {
     return element.title === postSlug;
   });

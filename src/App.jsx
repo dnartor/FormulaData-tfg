@@ -3,6 +3,8 @@ import "./index.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
 import "animate.css";
+import M from 'materialize-css';
+
 
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer";
@@ -22,6 +24,10 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 //import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 library.add(fab);
+
+document.addEventListener("DOMContentLoaded", function () {
+  M.AutoInit();
+});
 
 function App() {
   return (

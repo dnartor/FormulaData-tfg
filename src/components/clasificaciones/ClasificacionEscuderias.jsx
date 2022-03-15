@@ -5,7 +5,6 @@ import XMLParser from "react-xml-parser";
 import MiSpinner from "../MiSpinner.jsx";
 
 import styled from "@emotion/styled";
-import { data } from "jquery";
 
 const CenterLoader = styled.div`
   display: flex;
