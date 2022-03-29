@@ -176,6 +176,9 @@ hr.divider-m {
 hr.divider-l {
   height: 4px;
 }
+hr.pink{
+  background: #e8175d;
+}
 .card .title,
 .card h2 {
   margin: 0;
@@ -207,6 +210,12 @@ hr.divider-l {
 .lista_resultados tr:first-child::before,
 .lista_resultados tr:first-child td {
   font-weight: bold;
+}
+.lista_resultados_calendario.lista_resultados_calendario tr:nth-child(2)::before,
+.lista_resultados_calendario.lista_resultados_calendario tr:nth-child(2) td,
+.lista_resultados_calendario.lista_resultados_calendario tr:nth-child(3)::before,
+.lista_resultados_calendario.lista_resultados_calendario tr:nth-child(3) td{
+  color: black;
 }
 main a,
 a:hover > .title,
@@ -277,7 +286,15 @@ a > i.material-icons {
 .paginacionActiva{
   font-weight: bold;
 }
-
+.grid_calendario{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.element_calendario{
+  max-width: 20%;
+}
 /*************************************** Auxiliares ********************************/
 
 .margin-s {

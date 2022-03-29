@@ -5,8 +5,9 @@ import XMLParser from "react-xml-parser";
 import MiSpinner from "./MiSpinner.jsx";
 
 import styled from "@emotion/styled";
-import jquery from "jquery";
 import { Tabs, Tab } from "react-materialize";
+
+import CalendarioElement from "./CalendarioElement.jsx";
 
 const CenterLoader = styled.div`
   display: flex;
@@ -113,23 +114,25 @@ const Home = () => {
                 active={true}
                 title={"" + currentYear}
               >
-                <div className="row">
-                {Object.keys(currentSchedule).length > 0 ? (
-                  currentSchedule.children.map((carrera) => (
-                    <>
-                      <div className="col s6 m3">
-                        <p>{carrera.children[0].value}</p>
-                        <p>{carrera.children[2].value.substring(5)}</p>
-                        <p>{carrera.children[3].value.substring(0,5)}</p>
-                      </div>
-                      <hr></hr>
-                    </>
-                  ))
-                ) : (
-                  <CenterLoader>
-            <MiSpinner />
-          </CenterLoader>
-                )}
+                <div className="grid_calendario marginUD-xl">
+                  {Object.keys(currentSchedule).length > 0 ? (
+                    currentSchedule.children.map((carrera) => (
+                      <>
+                        <CalendarioElement
+                          key={
+                            carrera.attributes.round +
+                            "-" +
+                            carrera.attributes.season
+                          }
+                          carrera={carrera}
+                        />
+                      </>
+                    ))
+                  ) : (
+                    <CenterLoader>
+                      <MiSpinner />
+                    </CenterLoader>
+                  )}
                 </div>
               </Tab>
             </Tabs>
