@@ -6,13 +6,13 @@ import CalendarioRaceDone from "./CalendarioRaceDone.jsx";
 
 import styled from "@emotion/styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const ShowCarrera = styled.div`
   border-bottom: 4px solid #e8175d;
   border-right: 4px solid #e8175d;
   border-radius: 0 0 50px 0;
-  padding: 0 !important; 
+  padding: 0 !important;
   margin: 1rem;
   @media (min-width: 1025px) {
     max-width: 20%;
@@ -21,9 +21,9 @@ const ShowCarrera = styled.div`
     max-width: 45%;
   }
   @media (max-width: 600px) {
-    max-width:none;
+    max-width: none;
   }
- 
+
   position: relative;
 `;
 const RaceDoneCheck = styled.span`
@@ -46,22 +46,12 @@ const CalendarioElement = ({ carrera }) => {
   const [name] = useState(carrera.children[0].value);
   const [date] = useState(carrera.children[2].value);
   const [time] = useState(carrera.children[3].value.substring(0, 5));
-  const [first_practice] = useState([
-    carrera.children[4].children[0].value,
-    carrera.children[4].children[1].value,
-  ]);
-  const [second_practice] = useState([
-    carrera.children[5].children[0].value,
-    carrera.children[5].children[1].value,
-  ]);
-  const [third_practice] = useState([
-    carrera.children[6].children[0].value,
-    carrera.children[6].children[1].value,
-  ]);
-  const [qualification] = useState([
-    carrera.children[7].children[0].value,
-    carrera.children[7].children[1].value,
-  ]);
+
+  const [first_practice, guardarP1] = useState([]);
+  const [second_practice, guardarP2] = useState([]);
+  const [third_practice, guardarP3] = useState([]);
+  const [qualification, guardarQ] = useState([]);
+  const [trigger,guardarTrigger] = useState(false);
 
   const [today] = useState(new Date());
   const [newRaceDate] = useState(
@@ -75,7 +65,7 @@ const CalendarioElement = ({ carrera }) => {
   );
 
   const [raceDone] = useState(today > newRaceDate);
-
+  console.log(today + "  ||  " + newRaceDate);
   const [resultDoneRace, guardarResultDoneRace] = useState({});
   useEffect(() => {
     const raceDoneFunction = async () => {
@@ -89,6 +79,24 @@ const CalendarioElement = ({ carrera }) => {
     };
     if (apiCall && raceDone) {
       raceDoneFunction();
+    }else{
+      guardarP1([
+        carrera.children[4].children[0].value,
+        carrera.children[4].children[1].value,
+      ]);
+      guardarP2([
+        carrera.children[5].children[0].value,
+        carrera.children[5].children[1].value,
+      ]);
+      guardarP3([
+        carrera.children[6].children[0].value,
+        carrera.children[6].children[1].value,
+      ]);
+      guardarQ([
+        carrera.children[7].children[0].value,
+        carrera.children[7].children[1].value,
+      ]);
+      guardarTrigger(true);
     }
   }, [apiCall]);
   return (
@@ -109,10 +117,15 @@ const CalendarioElement = ({ carrera }) => {
             <>
               <CalendarioRaceDone resultDoneRace={resultDoneRace} />
               <RaceDoneCheck>
-              <FontAwesomeIcon className='white-text' icon={faCheck} size='lg' />
+                <FontAwesomeIcon
+                  className="white-text"
+                  icon={faCheck}
+                  size="lg"
+                />
               </RaceDoneCheck>
             </>
           ) : (
+            qualification && qualification.length ? (
             <>
               <tr className="raceNotDone">
                 <td>{qualification[0]}</td>
@@ -131,6 +144,11 @@ const CalendarioElement = ({ carrera }) => {
                 <td>{getGMTTime(third_practice[1].substring(0, 5))}</td>
               </tr>
             </>
+            ):
+            (
+              null
+            )
+            
           )}
         </tbody>
       </table>

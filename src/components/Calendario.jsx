@@ -20,7 +20,7 @@ const Home = () => {
   const [apiCall, guardarApiCall] = useState(true);
   const [currentSchedule, guardarCurrentSchedule] = useState("");
   const [prevSchedule, guardarPrevSchedule] = useState("");
-  const [currentYear, guardarCurrentYear] = useState(new Date().getFullYear());
+  const [currentYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
     const clienteApi = async () => {
@@ -36,26 +36,6 @@ const Home = () => {
       let dataApi = new XMLParser().parseFromString(resultado.data);
       guardarPrevSchedule(dataApi.children[0]);
       guardarApiCall(false);
-      /*
-      url = `https://ergast.com/api/f1/current/driverStandings`;
-      resultado = await axios.get(url);
-      dataApi = new XMLParser().parseFromString(resultado.data);
-      guardarCurrentStanding(
-        dataApi.children[0].children[0].children.slice(0, 7)
-      );
-
-      url = `https://ergast.com/api/f1/current/constructorStandings`;
-      resultado = await axios.get(url);
-      dataApi = new XMLParser().parseFromString(resultado.data);
-      guardarCurrentConstructorStanding(
-        dataApi.children[0].children[0].children.slice(0, 7)
-      );
-      url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=Formula%201&language=en&category=sports`;
-      resultado = await axios.get(url);
-      resultado = resultado.data.results;
-      guardarNoticias(resultado);
-      //guardarNoticias(resultado);
-      */
     };
     if (apiCall) {
       clienteApi();
@@ -101,8 +81,29 @@ const Home = () => {
                   swipeable: true,
                 }}
                 title={"" + currentYear - 1}
-              >
-                {currentYear - 1}
+              > 
+                <div className="grid_calendario marginUD-xl row">
+                  {Object.keys(prevSchedule).length > 0 ? (
+                    
+                    prevSchedule.children.map((carrera) => (
+                      <>
+                        <CalendarioElement
+                          key={
+                            carrera.attributes.round +
+                            "-" +
+                            carrera.attributes.season
+                          }
+                          carrera={carrera}
+                        />
+                      </>
+                    ))
+                    
+                  ) : (
+                    <CenterLoader>
+                      <MiSpinner />
+                    </CenterLoader>
+                  )}
+                </div>
               </Tab>
               <Tab
                 options={{
