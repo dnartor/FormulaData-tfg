@@ -114,7 +114,7 @@ const Home = () => {
                 active={true}
                 title={"" + currentYear}
               >
-                <div className="grid_calendario marginUD-xl">
+                <div className="grid_calendario marginUD-xl row">
                   {Object.keys(currentSchedule).length > 0 ? (
                     currentSchedule.children.map((carrera) => (
                       <>

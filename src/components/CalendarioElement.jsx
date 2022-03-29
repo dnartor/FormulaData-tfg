@@ -2,26 +2,66 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import XMLParser from "react-xml-parser";
 
+import CalendarioRaceDone from "./CalendarioRaceDone.jsx";
+
 import styled from "@emotion/styled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const ShowCarrera = styled.div`
   border-bottom: 4px solid #e8175d;
   border-right: 4px solid #e8175d;
   border-radius: 0 0 50px 0;
-  margin: 0 0.75rem 0.75rem 0.75rem;
-  padding: 0 !important;
-  width: 23%;
+  padding: 0 !important; 
+  margin: 1rem;
+  @media (min-width: 1025px) {
+    max-width: 20%;
+  }
+  @media (max-width: 1024px) {
+    max-width: 45%;
+  }
+  @media (max-width: 600px) {
+    max-width:none;
+  }
+ 
+  position: relative;
+`;
+const RaceDoneCheck = styled.span`
+  width: 50px;
+  height: 50px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  position: absolute;
+  right: -25px;
+  bottom: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CalendarioElement = ({ carrera }) => {
-  const [apiCall, guardarApiCall] = useState(true);
-  const [round, guardarRound] = useState(carrera.attributes.round);
-  const [year, guardarYear] = useState(carrera.attributes.season);
-  const [name, guardarName] = useState(carrera.children[0].value);
-  const [date, guardardate] = useState(carrera.children[2].value);
-  const [time, guardarTime] = useState(
-    carrera.children[3].value.substring(0, 5)
-  );
+  const [apiCall] = useState(true);
+  const [round] = useState(carrera.attributes.round);
+  const [year] = useState(carrera.attributes.season);
+  const [name] = useState(carrera.children[0].value);
+  const [date] = useState(carrera.children[2].value);
+  const [time] = useState(carrera.children[3].value.substring(0, 5));
+  const [first_practice] = useState([
+    carrera.children[4].children[0].value,
+    carrera.children[4].children[1].value,
+  ]);
+  const [second_practice] = useState([
+    carrera.children[5].children[0].value,
+    carrera.children[5].children[1].value,
+  ]);
+  const [third_practice] = useState([
+    carrera.children[6].children[0].value,
+    carrera.children[6].children[1].value,
+  ]);
+  const [qualification] = useState([
+    carrera.children[7].children[0].value,
+    carrera.children[7].children[1].value,
+  ]);
 
   const [today] = useState(new Date());
   const [newRaceDate] = useState(
@@ -37,7 +77,6 @@ const CalendarioElement = ({ carrera }) => {
   const [raceDone] = useState(today > newRaceDate);
 
   const [resultDoneRace, guardarResultDoneRace] = useState({});
-  const [circuitID, guardarCircuitID] = useState({});
   useEffect(() => {
     const raceDoneFunction = async () => {
       let url = `https://ergast.com/api/f1/` + year + `/` + round + `/results`;
@@ -48,55 +87,66 @@ const CalendarioElement = ({ carrera }) => {
         dataApi.children[0].children[0].children[4].children.slice(0, 3)
       );
     };
-    const getCarreraID = async () => {
-      let url = `http://ergast.com/api/f1/` + year + `/` + round + `/circuits`;
-      let resultado = await axios.get(url);
-      let dataApi = new XMLParser().parseFromString(resultado.data);
-      guardarCircuitID(dataApi.children[0].children[0].attributes.circuitId);
-    };
-    const getCircuitImage = async () => {
-      let url = `http://ergast.com/api/f1/` + year + `/` + round + `/circuits`;
-      let resultado = await axios.get(url);
-      let dataApi = new XMLParser().parseFromString(resultado.data);
-      guardarCircuitID(dataApi.children[0].children[0].attributes.circuitId);
-    };
     if (apiCall && raceDone) {
       raceDoneFunction();
     }
-    getCarreraID();
-    getCircuitImage();
   }, [apiCall]);
   return (
-    <ShowCarrera className="element_calendario">
+    <ShowCarrera className="element_calendario col s12 m6 l6">
       <div className="row">
         <div className="col s6">
           <p className="title-s">{name}</p>
         </div>
         <div className="col s6">
           <p className="subtitle-s">{date}</p>
-          <p className="subtitle-s">{time}</p>
+          <p className="subtitle-s">{getGMTTime(time)}</p>
         </div>
       </div>
       <hr className="divider-s pink"></hr>
       <table className="lista_resultados lista_resultados_calendario">
-      <tbody>
-        {Object.keys(resultDoneRace).length > 0
-          ? resultDoneRace.map((piloto) => (
-            <tr key={piloto.attributes.number}>
-              <td>
-                {piloto.children[0].children[1].value}{" "}
-                {piloto.children[0].children[2].value}
-                </td>
-                <td>{piloto.children[1].children[0].value}</td>
+        <tbody>
+          {Object.keys(resultDoneRace).length > 0 ? (
+            <>
+              <CalendarioRaceDone resultDoneRace={resultDoneRace} />
+              <RaceDoneCheck>
+              <FontAwesomeIcon className='white-text' icon={faCheck} size='lg' />
+              </RaceDoneCheck>
+            </>
+          ) : (
+            <>
+              <tr className="raceNotDone">
+                <td>{qualification[0]}</td>
+                <td>{getGMTTime(qualification[1].substring(0, 5))}</td>
               </tr>
-            ))
-          : null}
-          </tbody>
+              <tr className="raceNotDone">
+                <td>{first_practice[0]}</td>
+                <td>{getGMTTime(first_practice[1].substring(0, 5))}</td>
+              </tr>
+              <tr className="raceNotDone">
+                <td>{second_practice[0]}</td>
+                <td>{getGMTTime(second_practice[1].substring(0, 5))}</td>
+              </tr>
+              <tr className="raceNotDone">
+                <td>{third_practice[0]}</td>
+                <td>{getGMTTime(third_practice[1].substring(0, 5))}</td>
+              </tr>
+            </>
+          )}
+        </tbody>
       </table>
     </ShowCarrera>
   );
 };
 
+function getGMTTime(time) {
+  let hora = time.substring(0, 2);
+  let min = time.substring(2, 5);
+  hora++;
+  if (hora === 24) {
+    hora = 0;
+  }
+  return hora + min;
+}
 /*
 function removeLast2Words(str) {
   let lastIndexOfSpace = -1;

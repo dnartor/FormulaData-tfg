@@ -217,6 +217,22 @@ hr.pink{
 .lista_resultados_calendario.lista_resultados_calendario tr:nth-child(3) td{
   color: black;
 }
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone::before {
+  display: table-cell;
+  vertical-align: middle;
+}
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(1)::before {
+  content: "Q:";
+}
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(2)::before {
+  content: "P1:";
+}
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(3)::before {
+  content: "P2:";
+}
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(4)::before {
+  content: "P3:";
+}
 main a,
 a:hover > .title,
 a:hover > .title-s {
@@ -292,9 +308,7 @@ a > i.material-icons {
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.element_calendario{
-  max-width: 20%;
-}
+
 /*************************************** Auxiliares ********************************/
 
 .margin-s {
