@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import XMLParser from "react-xml-parser";
 
@@ -51,7 +52,6 @@ const CalendarioElement = ({ carrera }) => {
   const [second_practice, guardarP2] = useState([]);
   const [third_practice, guardarP3] = useState([]);
   const [qualification, guardarQ] = useState([]);
-  const [trigger,guardarTrigger] = useState(false);
 
   const [today] = useState(new Date());
   const [newRaceDate] = useState(
@@ -65,7 +65,6 @@ const CalendarioElement = ({ carrera }) => {
   );
 
   const [raceDone] = useState(today > newRaceDate);
-  console.log(today + "  ||  " + newRaceDate);
   const [resultDoneRace, guardarResultDoneRace] = useState({});
   useEffect(() => {
     const raceDoneFunction = async () => {
@@ -79,7 +78,7 @@ const CalendarioElement = ({ carrera }) => {
     };
     if (apiCall && raceDone) {
       raceDoneFunction();
-    }else{
+    } else {
       guardarP1([
         carrera.children[4].children[0].value,
         carrera.children[4].children[1].value,
@@ -96,62 +95,64 @@ const CalendarioElement = ({ carrera }) => {
         carrera.children[7].children[0].value,
         carrera.children[7].children[1].value,
       ]);
-      guardarTrigger(true);
     }
   }, [apiCall]);
   return (
     <ShowCarrera className="element_calendario col s12 m6 l6">
-      <div className="row">
-        <div className="col s6">
-          <p className="title-s">{name}</p>
+      <NavLink
+        className="hiden_link"
+        to={"/calendario/" + name + "/" + round + "/" + year + "/" + raceDone}
+      >
+        <div className="row">
+          <div className="col s6">
+            <p className="title-s">{name}</p>
+          </div>
+          <div className="col s6">
+            <p className="subtitle-s">{date}</p>
+            <p className="subtitle-s">{getGMTTime(time)}</p>
+          </div>
         </div>
-        <div className="col s6">
-          <p className="subtitle-s">{date}</p>
-          <p className="subtitle-s">{getGMTTime(time)}</p>
-        </div>
-      </div>
-      <hr className="divider-s pink"></hr>
-      <table className="lista_resultados lista_resultados_calendario">
-        <tbody>
-          {Object.keys(resultDoneRace).length > 0 ? (
-            <>
-              <CalendarioRaceDone resultDoneRace={resultDoneRace} />
-              <RaceDoneCheck>
-                <FontAwesomeIcon
-                  className="white-text"
-                  icon={faCheck}
-                  size="lg"
-                />
-              </RaceDoneCheck>
-            </>
-          ) : (
-            qualification && qualification.length ? (
-            <>
-              <tr className="raceNotDone">
-                <td>{qualification[0]}</td>
-                <td>{getGMTTime(qualification[1].substring(0, 5))}</td>
-              </tr>
-              <tr className="raceNotDone">
-                <td>{first_practice[0]}</td>
-                <td>{getGMTTime(first_practice[1].substring(0, 5))}</td>
-              </tr>
-              <tr className="raceNotDone">
-                <td>{second_practice[0]}</td>
-                <td>{getGMTTime(second_practice[1].substring(0, 5))}</td>
-              </tr>
-              <tr className="raceNotDone">
-                <td>{third_practice[0]}</td>
-                <td>{getGMTTime(third_practice[1].substring(0, 5))}</td>
-              </tr>
-            </>
-            ):
-            (
-              null
-            )
-            
-          )}
-        </tbody>
-      </table>
+        <hr className="divider-s pink"></hr>
+        {Object.keys(resultDoneRace).length > 0 ? (
+          <>
+            <table className="lista_resultados lista_resultados_calendario">
+              <tbody>
+                <CalendarioRaceDone resultDoneRace={resultDoneRace} />
+                <RaceDoneCheck>
+                  <FontAwesomeIcon
+                    className="white-text"
+                    icon={faCheck}
+                    size="lg"
+                  />
+                </RaceDoneCheck>
+              </tbody>
+            </table>
+          </>
+        ) : qualification && qualification.length ? (
+          <>
+            <table className="lista_resultados lista_resultados_calendario">
+              <tbody>
+                <tr className="raceNotDone">
+                  <td>{qualification[0]}</td>
+                  <td>{getGMTTime(qualification[1].substring(0, 5))}</td>
+                </tr>
+                <tr className="raceNotDone">
+                  <td>{first_practice[0]}</td>
+                  <td>{getGMTTime(first_practice[1].substring(0, 5))}</td>
+                </tr>
+                <tr className="raceNotDone">
+                  <td>{second_practice[0]}</td>
+                  <td>{getGMTTime(second_practice[1].substring(0, 5))}</td>
+                </tr>
+                <tr className="raceNotDone">
+                  <td>{third_practice[0]}</td>
+                  <td>{getGMTTime(third_practice[1].substring(0, 5))}</td>
+                </tr>
+              </tbody>
+            </table>
+          </>
+        ) : null}
+      </NavLink>
     </ShowCarrera>
   );
 };

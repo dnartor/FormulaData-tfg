@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import XMLParser from "react-xml-parser";
 
-import MiSpinner from "./MiSpinner.jsx";
+import MiSpinner from "../MiSpinner.jsx";
 
 import styled from "@emotion/styled";
 import { Tabs, Tab } from "react-materialize";

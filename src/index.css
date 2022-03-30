@@ -65,26 +65,32 @@ h1,
 .header {
   font-size: 48px;
   font-family: "Formula1", "B612", sans-serif;
+  color: #363636;
 }
 h2,
 .title {
   font-size: 38px;
   font-family: "Formula1", "B612", sans-serif;
+  color: #363636;
 }
 .title-m {
   font-size: 28px;
   font-family: "Formula1", "B612", sans-serif;
+  color: #363636;
 }
 .title-s {
   font-size: 18px;
   font-family: "Formula1", "B612", sans-serif;
+  color: #363636;
 }
 
 .subtitle {
   font-size: 24px;
+  color: #363636;
 }
 .subtitle-s {
   font-size: 16px;
+  color: #363636;
 }
 .date,
 .date-s {
