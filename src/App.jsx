@@ -12,7 +12,7 @@ import Clasificacion from "./components/Clasificacion";
 import ClasificacionPilotos from "./components/clasificaciones/ClasificacionPilotos";
 import ClasificacionEscuderias from "./components/clasificaciones/ClasificacionEscuderias";
 import Calendario from "./components/calendario/Calendario.jsx";
-import Carrera from "./components/calendario/Carrera";
+import Carrera from "./components/singleRace/Carrera";
 import AllCalendario from "./components/calendario/AllCalendario";
 import Circuitos from "./components/Circuitos.jsx";
 import Enciclopedia from "./components/Enciclopedia.jsx";
