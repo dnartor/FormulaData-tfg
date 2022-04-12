@@ -210,7 +210,7 @@ hr.pink{
   border: none;
 }
 .lista_resultados tr:nth-child(-n + 3)::before,
-.lista_resultados tr:nth-child(-n + 3) td {
+.lista_resultados tr:nth-child(-n + 3) td, .element_calendario .subtitle-s {
   color: #e8175d;
 }
 .lista_resultados tr:first-child::before,
@@ -226,6 +226,9 @@ hr.pink{
 .lista_resultados_calendario.lista_resultados_calendario .raceNotDone::before {
   display: table-cell;
   vertical-align: middle;
+}
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone{
+  color:black !important;
 }
 .lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(1)::before {
   content: "Q:";
@@ -317,7 +320,7 @@ a > i.material-icons {
 .raceButtons{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   max-height: 400px;
 }
@@ -424,6 +427,9 @@ button.activeRaceView{
 .reverse_wrap {
   display: flex;
   flex-wrap: wrap-reverse;
+}
+.column_scrollable{
+  overflow: scroll;
 }
 /*************************************** Medias ********************************/
 

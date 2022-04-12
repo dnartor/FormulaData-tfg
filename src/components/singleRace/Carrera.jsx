@@ -6,7 +6,6 @@ import XMLParser from "react-xml-parser";
 
 import ShowRaceRes from "./ShowRaceRes";
 import ShowPits from "./ShowPits";
-import ShowParrilla from "./ShowParrilla";
 import ShowQuali from "./ShowQuali";
 import ShowLaps from "./ShowLaps";
 
@@ -22,23 +21,41 @@ const Carrera = () => {
   const [activeFastLaps, guardarActiveFastLaps] = useState(false);
 
   const [raceDoneInfo, guardarRaceDoneInfo] = useState({});
+  const [raceDonePits, guardarRaceDonePits] = useState({});
+  const [raceDoneDrivers, guardarRaceDoneDrivers] = useState([]);
+  const [raceQuali, guardarQuali] = useState([]);
 
   useEffect(() => {
     const clienteApi = async () => {
       let url = `https://ergast.com/api/f1/` + year + "/" + round + "/results";
       let resultado = await axios.get(url);
       let dataApi = new XMLParser().parseFromString(resultado.data);
+      guardarRaceDoneDrivers(dataApi.children[0].children[0].children[4].children);
       guardarRaceDoneInfo(dataApi.children[0].children[0]);
+    };
+    const clienteApiPits = async () => {
+      let url = `https://ergast.com/api/f1/` + year + "/" + round + "/pitstops";
+      let resultado = await axios.get(url);
+      let dataApi = new XMLParser().parseFromString(resultado.data);
+      guardarRaceDonePits(dataApi.children[0].children[0]);
+    };
+    const clienteApiQuali = async () => {
+      let url = `https://ergast.com/api/f1/` + year + "/" + round + "/qualifying";
+      let resultado = await axios.get(url);
+      let dataApi = new XMLParser().parseFromString(resultado.data);
+      guardarQuali(dataApi.children[0].children[0]);
     };
     if (done === "true") {
       clienteApi();
+      clienteApiPits();
+      clienteApiQuali();
+      
     }
   }, [done]);
 
   function resetAction(active) {
     guardarActiveRes(false);
     guardarActivePits(false);
-    guardarActiveParrilla(false);
     guardarActiveQuali(false);
     guardarActiveFastLaps(false);
     switch (active) {
@@ -47,9 +64,6 @@ const Carrera = () => {
         break;
       case "pits":
         guardarActivePits(true);
-        break;
-      case "parrilla":
-        guardarActiveParrilla(true);
         break;
       case "quali":
         guardarActiveQuali(true);
@@ -92,9 +106,6 @@ const Carrera = () => {
               Resultados de carrera
             </button>
             <button onClick={() => resetAction("pits")}>PitStops</button>
-            <button onClick={() => resetAction("parrilla")}>
-              Parrilla de salida
-            </button>
             <button onClick={() => resetAction("quali")}>Clasificación</button>
             <button onClick={() => resetAction("laps")}>Vueltas rápidas</button>
           </>
@@ -111,9 +122,6 @@ const Carrera = () => {
             >
               PitStops
             </button>
-            <button onClick={() => resetAction("parrilla")}>
-              Parrilla de salida
-            </button>
             <button onClick={() => resetAction("quali")}>Clasificación</button>
             <button onClick={() => resetAction("laps")}>Vueltas rápidas</button>
           </>
@@ -125,12 +133,6 @@ const Carrera = () => {
               Resultados de carrera
             </button>
             <button onClick={() => resetAction("pits")}>PitStops</button>
-            <button
-              className="activeRaceView"
-              onClick={() => resetAction("parrilla")}
-            >
-              Parrilla de salida
-            </button>
             <button onClick={() => resetAction("quali")}>Clasificación</button>
             <button onClick={() => resetAction("laps")}>Vueltas rápidas</button>
           </>
@@ -142,9 +144,6 @@ const Carrera = () => {
               Resultados de carrera
             </button>
             <button onClick={() => resetAction("pits")}>PitStops</button>
-            <button onClick={() => resetAction("parrilla")}>
-              Parrilla de salida
-            </button>
             <button
               className="activeRaceView"
               onClick={() => resetAction("quali")}
@@ -161,9 +160,6 @@ const Carrera = () => {
               Resultados de carrera
             </button>
             <button onClick={() => resetAction("pits")}>PitStops</button>
-            <button onClick={() => resetAction("parrilla")}>
-              Parrilla de salida
-            </button>
             <button onClick={() => resetAction("quali")}>Clasificación</button>
             <button
               className="activeRaceView"
@@ -183,9 +179,6 @@ const Carrera = () => {
               Resultados de carrera
             </button>
             <button onClick={() => resetAction("pits")}>PitStops</button>
-            <button onClick={() => resetAction("parrilla")}>
-              Parrilla de salida
-            </button>
             <button onClick={() => resetAction("quali")}>Clasificación</button>
             <button onClick={() => resetAction("laps")}>Vueltas rápidas</button>
           </>
@@ -198,13 +191,11 @@ const Carrera = () => {
       case activeRes:
         return <ShowRaceRes raceDoneInfo={raceDoneInfo} />;
       case activePits:
-        return <ShowPits />;
-      case activeParrilla:
-        return <ShowParrilla />;
+        return <ShowPits raceDonePits={raceDonePits} raceDoneDrivers={raceDoneDrivers} />;
       case activeQuali:
-        return <ShowQuali />;
+        return <ShowQuali raceQuali={raceQuali}/>;
       case activeFastLaps:
-        return <ShowLaps />;
+        return <ShowLaps raceDoneInfo={raceDoneInfo} />;
       default:
         return <ShowRaceRes />;
     }
@@ -220,7 +211,7 @@ const Carrera = () => {
             <div className="col m4 s12 card grey lighten-4 raceButtons">
               {buttonsHandler()}
             </div>
-            <div className="col m8 s12">{showButton()}</div>
+            <div className="col m8 s12 column_scrollable">{showButton()}</div>
           </div>
         ) : (
           <p>Race not done</p>
