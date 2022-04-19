@@ -9,6 +9,7 @@ import ShowPits from "./ShowPits";
 import ShowQuali from "./ShowQuali";
 import ShowLaps from "./ShowLaps";
 
+
 const Carrera = () => {
   let { name } = useParams();
   let { round } = useParams();
@@ -16,11 +17,11 @@ const Carrera = () => {
   let { done } = useParams();
   const [activeRes, guardarActiveRes] = useState(true);
   const [activePits, guardarActivePits] = useState(false);
-  const [activeParrilla, guardarActiveParrilla] = useState(false);
   const [activeQuali, guardarActiveQuali] = useState(false);
   const [activeFastLaps, guardarActiveFastLaps] = useState(false);
 
   const [raceDoneInfo, guardarRaceDoneInfo] = useState({});
+  const [raceNotDoneInfo, guardarRaceNotDoneInfo] = useState({});
   const [raceDonePits, guardarRaceDonePits] = useState({});
   const [raceDoneDrivers, guardarRaceDoneDrivers] = useState([]);
   const [raceQuali, guardarQuali] = useState([]);
@@ -30,7 +31,9 @@ const Carrera = () => {
       let url = `https://ergast.com/api/f1/` + year + "/" + round + "/results";
       let resultado = await axios.get(url);
       let dataApi = new XMLParser().parseFromString(resultado.data);
-      guardarRaceDoneDrivers(dataApi.children[0].children[0].children[4].children);
+      guardarRaceDoneDrivers(
+        dataApi.children[0].children[0].children[4].children
+      );
       guardarRaceDoneInfo(dataApi.children[0].children[0]);
     };
     const clienteApiPits = async () => {
@@ -40,16 +43,25 @@ const Carrera = () => {
       guardarRaceDonePits(dataApi.children[0].children[0]);
     };
     const clienteApiQuali = async () => {
-      let url = `https://ergast.com/api/f1/` + year + "/" + round + "/qualifying";
+      let url =
+        `https://ergast.com/api/f1/` + year + "/" + round + "/qualifying";
       let resultado = await axios.get(url);
       let dataApi = new XMLParser().parseFromString(resultado.data);
       guardarQuali(dataApi.children[0].children[0]);
+    };
+    const clienteRaceNotDone = async () => {
+      let url = `https://ergast.com/api/f1/` + year + "/" + round;
+      let resultado = await axios.get(url);
+      let dataApi = new XMLParser().parseFromString(resultado.data);
+      console.log(dataApi);
+      guardarRaceNotDoneInfo(dataApi.children[0].children[0]);
     };
     if (done === "true") {
       clienteApi();
       clienteApiPits();
       clienteApiQuali();
-      
+    } else {
+      clienteRaceNotDone();
     }
   }, [done]);
 
@@ -126,17 +138,6 @@ const Carrera = () => {
             <button onClick={() => resetAction("laps")}>Vueltas rápidas</button>
           </>
         );
-      case activeParrilla:
-        return (
-          <>
-            <button onClick={() => resetAction("res")}>
-              Resultados de carrera
-            </button>
-            <button onClick={() => resetAction("pits")}>PitStops</button>
-            <button onClick={() => resetAction("quali")}>Clasificación</button>
-            <button onClick={() => resetAction("laps")}>Vueltas rápidas</button>
-          </>
-        );
       case activeQuali:
         return (
           <>
@@ -191,11 +192,16 @@ const Carrera = () => {
       case activeRes:
         return <ShowRaceRes raceDoneInfo={raceDoneInfo} />;
       case activePits:
-        return <ShowPits raceDonePits={raceDonePits} raceDoneDrivers={raceDoneDrivers} />;
+        return (
+          <ShowPits
+            raceDonePits={raceDonePits}
+            raceDoneDrivers={raceDoneDrivers}
+          />
+        );
       case activeQuali:
-        return <ShowQuali raceQuali={raceQuali}/>;
+        return <ShowQuali raceQuali={raceQuali} />;
       case activeFastLaps:
-        return <ShowLaps raceDoneInfo={raceDoneInfo} />;
+        return <ShowLaps raceDoneLaps={raceDoneInfo} />;
       default:
         return <ShowRaceRes />;
     }
@@ -214,7 +220,35 @@ const Carrera = () => {
             <div className="col m8 s12 column_scrollable">{showButton()}</div>
           </div>
         ) : (
-          <p>Race not done</p>
+          <div className="row normal_wrap">
+            <div className="center_container col m6 pull-m3 s12 card grey lighten-4 center_container">
+              <table className="striped centered">
+                <thead>
+                  <tr></tr>
+                </thead>
+                {Object.keys(raceNotDoneInfo).length > 0 ? (
+                
+                raceNotDoneInfo.children[7].name === 'Sprint' ? (
+                <tbody>
+                  <tr>
+                    <td>Race</td>
+                    <td>Race</td>
+                  </tr>
+                </tbody>
+                ):(
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                )
+                ):(
+                  null
+                )}
+              </table>
+            </div>
+          </div>
         )}
       </div>
     </div>

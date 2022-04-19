@@ -233,14 +233,23 @@ hr.pink{
 .lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(1)::before {
   content: "Q:";
 }
-.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(2)::before {
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(4)::before {
   content: "P1:";
 }
 .lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(3)::before {
   content: "P2:";
 }
-.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(4)::before {
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(2)::before {
   content: "P3:";
+}
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(1).sprint::before {
+  content: "SP:";
+}
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(2).p2::before {
+  content: "P2:";
+}
+.lista_resultados_calendario.lista_resultados_calendario .raceNotDone:nth-child(3).quali::before {
+  content: "Q:";
 }
 main a,
 a:hover > .title,

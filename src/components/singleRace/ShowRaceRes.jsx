@@ -12,6 +12,11 @@ const CenterLoader = styled.div`
 `;
 
 const ShowRaceRes = ({ raceDoneInfo }) => {
+  if (Object.keys(raceDoneInfo).length > 0) {
+    raceDoneInfo.children[4].children.sort(function (a, b) {
+      return a.attributes.position - b.attributes.position;
+    });
+  }
   return Object.keys(raceDoneInfo).length > 0 ? (
     <table className="showRaceResTable striped centered">
       <thead>

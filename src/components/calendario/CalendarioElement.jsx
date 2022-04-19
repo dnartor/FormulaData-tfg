@@ -82,18 +82,22 @@ const CalendarioElement = ({ carrera }) => {
       guardarP1([
         carrera.children[4].children[0].value,
         carrera.children[4].children[1].value,
+        carrera.children[4].name,
       ]);
       guardarP2([
         carrera.children[5].children[0].value,
         carrera.children[5].children[1].value,
+        carrera.children[5].name,
       ]);
       guardarP3([
         carrera.children[6].children[0].value,
         carrera.children[6].children[1].value,
+        carrera.children[6].name,
       ]);
       guardarQ([
         carrera.children[7].children[0].value,
         carrera.children[7].children[1].value,
+        carrera.children[7].name,
       ]);
     }
   }, [apiCall]);
@@ -132,22 +136,45 @@ const CalendarioElement = ({ carrera }) => {
           <>
             <table className="lista_resultados lista_resultados_calendario">
               <tbody>
-                <tr className="raceNotDone">
-                  <td>{qualification[0]}</td>
-                  <td>{getGMTTime(qualification[1].substring(0, 5))}</td>
-                </tr>
-                <tr className="raceNotDone">
-                  <td>{first_practice[0]}</td>
-                  <td>{getGMTTime(first_practice[1].substring(0, 5))}</td>
-                </tr>
-                <tr className="raceNotDone">
-                  <td>{second_practice[0]}</td>
-                  <td>{getGMTTime(second_practice[1].substring(0, 5))}</td>
-                </tr>
-                <tr className="raceNotDone">
-                  <td>{third_practice[0]}</td>
-                  <td>{getGMTTime(third_practice[1].substring(0, 5))}</td>
-                </tr>
+                {qualification[2] === "Qualifying" ? (
+                  <>
+                    <tr className="raceNotDone">
+                      <td>{qualification[0]}</td>
+                      <td>{getGMTTime(qualification[1].substring(0, 5))}</td>
+                    </tr>
+                    <tr className="raceNotDone">
+                      <td>{third_practice[0]}</td>
+                      <td>{getGMTTime(third_practice[1].substring(0, 5))}</td>
+                    </tr>
+                    <tr className="raceNotDone">
+                      <td>{second_practice[0]}</td>
+                      <td>{getGMTTime(second_practice[1].substring(0, 5))}</td>
+                    </tr>
+                    <tr className="raceNotDone">
+                      <td>{first_practice[0]}</td>
+                      <td>{getGMTTime(first_practice[1].substring(0, 5))}</td>
+                    </tr>
+                  </>
+                ) : (
+                  <>
+                    <tr className="raceNotDone sprint">
+                      <td>{qualification[0]}</td>
+                      <td>{getGMTTime(qualification[1].substring(0, 5))}</td>
+                    </tr>
+                    <tr className="raceNotDone p2">
+                      <td>{third_practice[0]}</td>
+                      <td>{getGMTTime(third_practice[1].substring(0, 5))}</td>
+                    </tr>
+                    <tr className="raceNotDone quali">
+                      <td>{second_practice[0]}</td>
+                      <td>{getGMTTime(second_practice[1].substring(0, 5))}</td>
+                    </tr>
+                    <tr className="raceNotDone">
+                      <td>{first_practice[0]}</td>
+                      <td>{getGMTTime(first_practice[1].substring(0, 5))}</td>
+                    </tr>
+                  </>
+                )}
               </tbody>
             </table>
           </>

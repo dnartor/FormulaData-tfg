@@ -11,9 +11,9 @@ const CenterLoader = styled.div`
   align-items: center;
 `;
 
-const ShowRaceRes = ({ raceDoneInfo }) => {
-  raceDoneInfo.children[4].children.sort(function (a, b) {
-    console.log(a);
+const ShowRaceRes = ({ raceDoneLaps }) => {
+
+  raceDoneLaps.children[4].children.sort(function (a, b) {
     let timeA = '';
     let timeB = '';
     if (a.children[6] === undefined){
@@ -36,10 +36,9 @@ const ShowRaceRes = ({ raceDoneInfo }) => {
     }else{
         timeB=b.children[6].attributes.rank;
     }
-    console.log("comparo: a: " + timeA + " - b: "+ timeB  );
     return timeA - timeB;
   });
-  return Object.keys(raceDoneInfo).length > 0 ? (
+  return Object.keys(raceDoneLaps).length > 0 ? (
     <table className="showRaceResTable striped centered">
       <thead>
         <tr>
@@ -54,7 +53,7 @@ const ShowRaceRes = ({ raceDoneInfo }) => {
       </thead>
 
       <tbody>
-        {raceDoneInfo.children[4].children.map((piloto) => (
+        {raceDoneLaps.children[4].children.map((piloto) => (
           <tr key={piloto.attributes.position}>
             <td>{piloto.attributes.position}</td>
             <td>
