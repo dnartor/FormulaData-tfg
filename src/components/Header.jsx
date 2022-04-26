@@ -80,9 +80,6 @@ const Header = () => {
               <NavLink to="/noticias">Noticias</NavLink>
             </li>
             <li>
-              <NavLink to="/circuitos">Circuitos</NavLink>
-            </li>
-            <li>
               <NavLink to="/enciclopedia">Enciclopedia</NavLink>
             </li>
           </ul>

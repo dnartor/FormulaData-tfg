@@ -14,7 +14,6 @@ import ClasificacionEscuderias from "./components/clasificaciones/ClasificacionE
 import Calendario from "./components/calendario/Calendario.jsx";
 import Carrera from "./components/singleRace/Carrera";
 import AllCalendario from "./components/calendario/AllCalendario";
-import Circuitos from "./components/Circuitos.jsx";
 import Enciclopedia from "./components/Enciclopedia.jsx";
 import Noticias from "./components/noticias/Noticias.jsx";
 import Noticia from "./components/noticias/Noticia.jsx";
@@ -52,8 +51,6 @@ function App() {
             <Route path="" element={<Calendario />} />
             <Route path=":name/:round/:year/:done" element={<Carrera />} />
           </Route>
-          <Route path="/circuitos" element={<Circuitos />} />
-          <Route path="/encliclopedia" element={<Circuitos />} />
           <Route path="/enciclopedia" element={<Enciclopedia />} />
           <Route path="/noticias" element={<Noticias />}>
             <Route path="" element={<AllNoticias />} />

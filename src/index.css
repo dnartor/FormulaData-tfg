@@ -357,6 +357,19 @@ button.activeRaceView{
 .showRaceResTable tbody > tr:nth-child(1),.showRaceResTable tbody >  tr:nth-child(2),.showRaceResTable tbody >  tr:nth-child(3){
   color:#e8175d;
 }
+.noDoneRace_info .row{
+  margin-bottom: 0;
+}
+.noDoneRace_info .row .col.s4{
+    border-right: 2px solid #e8175d;
+    border-bottom: 2px solid #e8175d;
+    padding-right: 0;
+    border-radius: 0 0 10px;
+}
+.noDoneRace_info .divider-s{
+  margin-top: 0;
+  margin-bottom: 0;
+}
 /*************************************** Auxiliares ********************************/
 
 .margin-s {

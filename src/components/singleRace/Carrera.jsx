@@ -9,7 +9,6 @@ import ShowPits from "./ShowPits";
 import ShowQuali from "./ShowQuali";
 import ShowLaps from "./ShowLaps";
 
-
 const Carrera = () => {
   let { name } = useParams();
   let { round } = useParams();
@@ -220,33 +219,189 @@ const Carrera = () => {
             <div className="col m8 s12 column_scrollable">{showButton()}</div>
           </div>
         ) : (
-          <div className="row normal_wrap">
+          <div className="row normal_wrap noDoneRace_info">
             <div className="center_container col m6 pull-m3 s12 card grey lighten-4 center_container">
-              <table className="striped centered">
-                <thead>
-                  <tr></tr>
-                </thead>
-                {Object.keys(raceNotDoneInfo).length > 0 ? (
-                
-                raceNotDoneInfo.children[7].name === 'Sprint' ? (
-                <tbody>
-                  <tr>
-                    <td>Race</td>
-                    <td>Race</td>
-                  </tr>
-                </tbody>
-                ):(
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
+              {Object.keys(raceNotDoneInfo).length > 0 ? (
+                raceNotDoneInfo.children[7].name === "Sprint" ? (
+                  <>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">{raceNotDoneInfo.children[2].value}</p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Carrera</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[3].value.substring(0, 5)
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <hr className="divider-s"></hr>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">
+                          {raceNotDoneInfo.children[7].children[0].value}
+                        </p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Sprint</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[7].children[1].value.substring(0, 5)
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <hr className="divider-s"></hr>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">
+                          {raceNotDoneInfo.children[6].children[0].value}
+                        </p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Práctica 2</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[6].children[1].value.substring(
+                              0,
+                              5
+                            )
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <hr className="divider-s"></hr>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">
+                          {raceNotDoneInfo.children[5].children[0].value}
+                        </p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Clasificación</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[5].children[1].value.substring(
+                              0,
+                              5
+                            )
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <hr className="divider-s"></hr>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">
+                          {raceNotDoneInfo.children[4].children[0].value}
+                        </p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Practica 1</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[4].children[1].value.substring(
+                              0,
+                              5
+                            )
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">{raceNotDoneInfo.children[2].value}</p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Carrera</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[3].value.substring(0, 5)
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <hr className="divider-s"></hr>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">
+                          {raceNotDoneInfo.children[7].children[0].value}
+                        </p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Clasificación</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[7].value.substring(0, 5)
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <hr className="divider-s"></hr>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">
+                          {raceNotDoneInfo.children[6].children[0].value}
+                        </p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Práctica 3</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[6].children[1].value.substring(
+                              0,
+                              5
+                            )
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <hr className="divider-s"></hr>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">
+                          {raceNotDoneInfo.children[5].children[0].value}
+                        </p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Práctica 2</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[5].children[1].value.substring(
+                              0,
+                              5
+                            )
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <hr className="divider-s"></hr>
+                    <div className="row">
+                      <div className="col s4 m2">
+                        <p className="">
+                          {raceNotDoneInfo.children[4].children[0].value}
+                        </p>
+                      </div>
+                      <div className="col s8 m10">
+                        <p className="title-s">Practica 1</p>
+                        <p className="subtitle-s">
+                          {getGMTTime(
+                            raceNotDoneInfo.children[4].children[1].value.substring(
+                              0,
+                              5
+                            )
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  </>
                 )
-                ):(
-                  null
-                )}
-              </table>
+              ) : null}
             </div>
           </div>
         )}
@@ -255,4 +410,14 @@ const Carrera = () => {
   );
 };
 
+function getGMTTime(time) {
+  console.log(time);
+  let hora = time.substring(0, 2);
+  let min = time.substring(2, 5);
+  hora++;
+  if (hora === 24) {
+    hora = 0;
+  }
+  return hora + min;
+}
 export default Carrera;
