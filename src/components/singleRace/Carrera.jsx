@@ -337,7 +337,7 @@ const Carrera = () => {
                         <p className="title-s">Clasificación</p>
                         <p className="subtitle-s">
                           {getGMTTime(
-                            raceNotDoneInfo.children[7].value.substring(0, 5)
+                            raceNotDoneInfo.children[7].children[1].value.substring(0, 5)
                           )}
                         </p>
                       </div>

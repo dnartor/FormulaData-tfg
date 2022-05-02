@@ -405,6 +405,9 @@ button.activeRaceView{
 .vertical-align {
   align-self: center;
 }
+.black-txt{
+  color:#363636;
+}
 .hard-pink {
   color: #e8175d !important;
 }
