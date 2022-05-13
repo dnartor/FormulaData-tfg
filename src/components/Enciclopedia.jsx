@@ -90,7 +90,7 @@ const Encliclopedia = () => {
               </>
             )
           )}
-          <h1 className="title">Constructoras</h1>
+          <h1 className="title">Constructores</h1>
           {constructors.children.map((constructor) => (
             <>
               <a
